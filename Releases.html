@@ -1,40 +1,1882 @@
 <script src="https://rawcdn.githack.com/oscarmorrison/md-page/master/md-page.js"></script><noscript>
+  
+Vorteks Release Notes
+=====================
 
-## Release 3.1.41.5
-
-### Downloads:
-* [Vorteks_3.1.41.5](https://qualta.sharepoint.com/:u:/s/Qualta580/EVs0PMpy4I5NtCLSopZIYP0BoTr_FNinoWcxHJM6BM1SuA)
-* [Vorteks_3.1.41.5_NoLicense](https://qualta.sharepoint.com/:u:/s/Qualta580/ER80YEIQalBOiaxsBIbsnm8BNCNMVHsScJdInVAPhI9HQQ)
-
-### Release Notes:
-
-Processing Environment
-   *  Fixes
-     - Universal Converter
+## 3.1.41.5
+05/02/2024
+### Processing Environment
+   * #### Fixes
+     * Universal Converter
        * Fixed issue with the first number being removed from spreadsheet headers that start with numbers.
-   *  Improvements
-     - Dependences
-       * Update Newtonsoft.Json
-       * Add external algorithm library
-     - API Reader
+   * #### Improvements
+     * Dependences
+       * Updated Newtonsoft.Json
+       * Added external algorithm library
+     * API Reader
        * Convert algorithm to use external library
-       * Add Accepted Media Type option
-       * Add error handling when the API response is successful but documents fail in the Universal Converter
-   *  New Features
-     - Add API Processor Module
+       * Added Accepted Media Type option
+       * Added error handling when the API response is successful but documents fail in the Universal Converter
+   * #### New Features
+     * Added API Processor Module
        * Processing module for sending data to an API Server for processing
        * Create new documents from results
        * Append results to current documents
        * Use available fields to choose data being sent
- Visualizing Environment
-   * Fixes
-     - Fixed issue with app crashing when moving Timeline pane next to View Info pane
-     - Center Visualization buttons' captions
-     - Fixed issue with nodes disappearing when monitor goes to sleep
-     - Fixed importing excel with missing headers. Empty headers will have names generated for them.
-   *  Improvements
-     - Updated Timeline UI - enlarged font, better Y-axis label spacing
-     - Added Print Settings to application Settings for changing and saving default print settings.
-     - Added Print Settings to Export dialog for changing the settings for the current export.
-     - Added grayscale Color Legend color set
-     - Update Visualization libraries to the latest version
+### Visualizing Environment
+   * #### Fixes
+     * Fixed issue with app crashing when moving Timeline pane next to View Info pane
+     * Center Visualization buttons' captions
+     * Fixed issue with nodes disappearing when monitor goes to sleep
+     * Fixed importing excel with missing headers. Empty headers will have names generated for them.
+   * #### Improvements
+     * Updated Timeline UI - enlarged font, better Y-axis label spacing
+     * Added Print Settings to application Settings for changing and saving default print settings.
+     * Added Print Settings to Export dialog for changing the settings for the current export.
+     * Added grayscale Color Legend colorset
+     * Updated Visualization libraries to the latest version
+
+## 3.1.0.113
+2/29/2024 13:04:00
+### Processing Environment
+   * #### Fixes
+     * Cancel Save As Window closes VPE. Issues:(VPE-424)
+     * Pressing Cancel in the save dialog does not return to project. Issues:(VPE-176)
+     * Universal Converter
+      * Text conversion when Single Text Block option is off doesn't split paragraphs. Issues:(VPE-407)
+     * Entity Relationship Finder
+         * Paragraph scope uses entire xml block. Issues:(VPE-407)
+     * File Writer
+         * File Writer fails to write files that contain file extensions in name. Issues:(VPE-386)
+     * Database Connector
+         * Timeout field shows warning when deleting field entry. Issues:(VPE-412)
+         * An incorrect query causes the DB Connector to throw a fatal exception. Issues:(VPE-200)
+     * Non-Lexical Extractor
+         * Phrases do not split on & or | characters. Issues:(VPE-419)
+         * Phrases with one word are returned when Min Words Per Phrase = 2
+     * Web Crawler
+         * Web Crawler passes no Available Fields. Issues:(VPE-354)
+     * VDM Writer
+         * Folder select needs "single folder" mode so that it does not multiselect folders. Issues:(VPE-160)
+     * Timestamper
+         * Custom format field cutoff. Issues:(VPE-323)
+     * List Maker
+         * Concatenate properties overlap with timeout settings. Issues:(VPE-422)
+     * DB Reader
+         * SQLITE databases throw error when converting the filepath to xml element name. Issues:(VPE-413)
+     * XML Checker
+         * Standard mode does not display new lines correctly.
+         * XML mode does not display new lines correctly.
+### Visualizing Environment
+   * #### Fixes
+     * Cancel closes the application. Issues:(VVE-2413)
+     * Split by Search creates persistent processing dialog. Issues:(VVE-2016)
+     * Moving details panel under timeline causes a crash.
+     * Geographic View
+         * Edges don't correctly display directed/bidirectional lines. Issues:(VVE-2404)
+         * Cancelling streaming input can cause crash. Issues:(VVE-2263)
+     * Document View
+         * Standard mode does not display new lines correctly.
+         * XML mode does not display new lines correctly.
+         * Creating a new project with an open document view can cause crash. Issues:(VVE-2255)
+     * Hierarchy View
+         * Common nodes are in wrong position after removing attached hierarchy and rebuilding. Issues:(VVE-2099)
+         * Common nodes are not colored after removing attached hierarchy and rebuilding.
+         * Nodes with images are not selectable. Issues:(VVE-2123)
+         * Vertical scale slider changes horizontal layout drastically without moving it. Issues:(VVE-2411)
+         * Focusing hierarchies/nodes after scaling does not move to correct location.
+         * Scale sliders can default to min/max position for some views.
+         * Large labels can truncate. Issues:(VVE-2296)
+         * Horizontal layout can have overlapping nodes
+     * Color Legend
+         * Changing segment count and dragging pips can cause a crash. Issues:(VVE-2354)
+         * Fail to import color legend. Issues:(VVE-2384)
+     * Network View
+         * Cannot create network view using compound fields as to/from in an edge. Issues:(VVE-2366)
+         * Cancelling streaming input can cause crash. Issues:(VVE-2263)
+         * Collapsing node groups can cause an exception. Issues:(VVE-2292)
+     * Nexus View
+         * Creating view from GRAPHML import can cause exception. Issues:(VVE-2311)
+     * VDM Projects
+         * Invalid host address crashes VVE. Issues:(VVE-2390)
+## 3.1.0.94
+12/5/2023 13:55:00
+### Visualizing Environment
+   * #### Fixes
+     * Color Legend
+         * Document type color legend doesn't update automatically if it has been edited. Issues:(VVE-421)
+     * All Views
+         * Camera position is wrong after using scroll to mouse. Issues:(VVE-2400,VVE-2414)
+   * #### Improvements
+     * Tokenization
+         * Add \[\] and ' to the default split characters.
+         * Persist user changes for split characters.
+### Processing Environment
+   * #### Fixes
+     * Entity Relationship Finder
+         * Sentences not splitting with period followed by newline.
+         * Cannot use attributes as entity path.
+        #### Improvements
+     * XML Checker
+         * Add warning when using XML Checker in conjunction with List Maker or VVE Writer. The checker can cause writers to timeout prematurely.
+     * VVE Writer
+         * Add warning when using XML Checker in conjunction with List Maker or VVE Writer. The checker can cause writers to timeout prematurely.
+         * Add timeout setting.
+     * List Maker
+         * Add warning when using XML Checker in conjunction with List Maker or VVE Writer. The checker can cause writers to timeout prematurely.
+         * Add timeout setting.
+## 3.1.0.87
+10/23/2023 14:26:15
+### Visualizing Environment
+   * ### General
+     * Hierarchy View
+         * Remove advanced mode.
+     * Image Manager
+         * Remove Image Manager.
+   * #### Improvements
+     * Settings
+         * Add parenthesis to default whitespace characters.
+     * Import
+         * Change "id" attribute to "document\_source". Issues:(VVE-2406)
+         * Change "number" attribute to "row\_number". Issues:(VVE-2406)
+     * Add red border to import wizard Next/Finish button.
+     * Add Get Started screen.
+     * Add document type color to fields.
+     * Project Explorer
+         * Add "NEW" indicator.
+         * Add arrow to indicate focused/active.
+     * Export
+         * Add dataset name and document types to nodes and edges exports..
+         * Export For FNA: Nodes and Edges CSV has the option to include additional data.
+     * All Views
+         * Dates without time do not show time in string results.
+   * #### Fixes
+     * Document View
+         * Fix error if duplicate tokenizer white space characters are set.
+     * Regex Finder
+         * Include inline tags defaults to true.
+     * Network
+         * Edges were able to hold fields from different doc types.
+     * All Views
+         * Clearing alias fields from Compound Fields does not work. Issues:(VVE-2300)
+     * Export
+         * Web View/Interactive Web View dataset has wrong values when there are duplicate column names.
+     * Help
+         * Updated help documentation. Issues:(VVE-1986,VVE-1576,VVE-2378,VVE-2389,VVE-2373,VVE-2360,VVE-2387,VVE-2277,VVE-2386,VVE-2388,VVE-2367,VVE-2380,VVE-2111)
+     * Geographic View
+         * Nodes in views made with alias fields are only reflecting one Document Type Color.
+     * Network View
+         * Fix clearing fields from Node definitions.(VVE-2300)
+         * Fix building network view using aliases.(VVE-1970)
+### Processing Environment
+   * #### Fixes
+     * List Maker
+         * Delimiter is added to the beginning of new lines when concatenating and max terms per string is > 0.
+     * Help Files
+         * VPE help files have outdated information. Issues:(VPE-411,VPE-408,VPE-407,VPE-406,VPE-405,VPE-404,VPE-403,VPE-402,VPE-401,VPE-400,VPE-399,VPE-398,VPE-395)
+     * Non-lexical Extractor
+         * Update properties to have document paths first and group options for phrases together..
+   * #### Improvements
+     * Entity Releationship Finder
+         * Results are named based on search scope. IE: <relationship\_sentence>.</relationship\_sentence>
+     * Non-Lex Extractor
+         * Dashes are no longer cleaned from terms and each dash counts towards to minimum words per phrase threshold "SA-20" would be caught with 'Words per phrase' minimum set to 2
+   * #### New Features
+     * API Reader
+         * Add new API reader input module for fetching data from REST APIs.
+     * Field Remover
+         * Add Field Remover module to removing elements/attributes from XML documents.
+### Data Manager
+   * #### Improvements
+     * Regex Finder
+         * Add required option to set the Mode (Extractor/Replace (Inline Tagging)).
+   * #### Fixes
+     * Help Files
+         * Update help files. Issues:(VDM-106)
+### All Apps
+   * #### Fixes
+     * Universal Converter
+         * Replace 'Omit Worksheet Element' option with 'Merge Worksheets Into One Doc Type'. Enabling this will combine all worksheet columns into one doc type. A @sheet attribute is also added to all documents now.
+     * Universal Converter
+         * Add sheet name to each document when 'Omit Worksheet Element' is checked.
+     * README
+         * Update README file with installer notes.
+## 3.1.0.30
+07/26/2023 10:35:22
+### Visualizing Environment
+   * #### Improvements
+     * Auto-clean old temp and import files.
+     * Import
+         * Add option to enable/disable auto-registration of spreadsheets.
+     * Hierarchy View
+         * Add Horizontal Layout option.
+     * All Views
+         * Add zoom slider.
+         * Change default zoom behavior to zoom to cursor.
+   * #### Fixes
+     * Import
+         * GRAPHML import creates two doc types (nodes,edges) and views cannot be built without using both. Now one doc type is created (edges) with node data nested in it.
+     * Distribution View
+         * Create termlist from selected values does not include all values.
+     * Dataset View
+         * Geopoint Compound field reverses order in Dataset view.
+     * Network View
+         * Field Tree Items are not restored for saved views.
+         * Searching for nodes with multiple document types with no results does not show a message.
+     * Geographic View
+         * Change geo network edge labels for "from/to" to "from geocoord/to geocoord".
+     * Action Tab Open/Close buttons off-centered.
+### Processing Environment
+   * #### Fixes
+     * Cannot reorder term lists in list.
+     * Term List Conflict Wizard
+         * Wizard does not show which term list is being modified.
+   * #### Improvements
+     * Allow Drag-and-Drop files onto term lists.
+## 3.1.0.5
+04/27/2023 12:34:20
+### Visualizing Environment
+   * #### Improvements
+     * Export
+         * Add option for including additional data.
+     * Import
+         * Importing Excel documents includes the sheet names as part of the document type name.
+     * Correlation View
+         * Add 'Create dataset from edges'.
+     * Dataset View
+         * Add ability to copy value from cell.
+     * Network View
+         * Add duplicate edge validation.
+   * #### Fixes
+     * Geographic View
+         * Geocoords with white space cause view to not be built.
+         * Geo network edges always appear bi-directional when using compound geo points.
+     * Network View
+         * Add duplicate edge validation.
+     * Data Set View
+         * Alias and Compound Fields cause dataset to not load correctly.
+     * Export
+         * Export filenames have spaces.
+   * #### New Features
+     * Import
+         * Add ability to start automatic imports from .vimp files..
+### Processing Environment
+   * #### Improvements
+     * Universal Converter
+         * Excel documents include the sheet names as part of the document type name.
+     * Available Fields
+         * Show children of filtered fields.
+   * #### Fixes
+     * Term Lists
+         * Add "Refresh" button that will re-run the preprocessing on selected term lists..
+   * #### New Features
+     * VVE Writer
+         * Add new output module that will automatically launch VVE and start an import dlg..
+## 3.0.0.361
+02/08/2023 22:32:45
+### Visualizing Environment
+   * #### Improvements
+     * Dataset View
+         * Columns with the same name show parent info for distinguishability.
+   * #### New Features
+     * Network View
+         * Add FNA export option for nodes and edges csv.
+         * Homogeneous Network Converter - Use the action tab command to convert a heterogeneous Network View into a new homogeneous Network View.
+   * #### Fixes
+     * All Views
+         * Fix unique view names when creating a view from another view. Issues:(VVE-2308)
+     * Network View
+         * Edges are created erroneously for nodes with multiple document fields. Issues:(VVE-2158)
+### Processing Environment
+   * #### Improvements
+     * OpenSearch
+         * Add "Query String" search type.
+         * Add "Validate Server Certificate" option.
+   * #### Fixes
+     * OpenSearch
+         * Invalid field names cause missing Available Fields.
+     * OpenSearch
+         * Nested fields and "item" fields are missing from Available Fields.
+### All Apps
+   * #### Fixes
+     * UniversalConverter
+         * CSV converter extracts blank lines.
+## 3.0.0.353
+12/21/2022 10:06:36
+### Processing Environment
+   * #### New Features
+     * Open Search
+         * Add support for OpenSearch and ElasticSearch up to v7.10
+## 3.0.0.347
+12/09/2022 03:06:36
+### Visualizing Environment
+   * #### Fixes
+     * Network View
+         * Network edges contain incorrect document ids. Issues:(VVE-2326)
+   * #### Improvements
+     * Geographic View
+         * Add 'Create dataset from edges' option for geo networks..
+### Processing Environment
+   * #### Fixes
+     * List Maker
+         * List maker - Max Terms Per String is restricted to one digit. Issues:(VPE-410)
+## 3.0.0.340
+11/7/2022 9:52:00
+### Processing Environment
+   * #### Improvements
+     * Merger
+         * Indices can be specified by ranges (1-4), comma separated list of numbers (1,2,3,4), or mixed (1,2-3,4).
+         * Better error handling.
+     * List Maker
+         * Add ability to specify maximum number of terms that can be added to a concatenated string. Each concatenated string will be appended on a new line..
+     * Web Crawler
+         * Link tags now include an attribute 'value' that contains the displayed text for the link in addition to the url.
+   * #### Fixes
+     * Import buttons' names/descriptions are not consistent. Change to "Import Data" Exception encountered while clearing Alias field from 'Optional' field
+     * File Writer
+         * File Writer fails to write files that contain file extensions in name. Issues:(VPE-386)
+     * Non-Lexical Extractor
+         * Comma separated phrases are extracted as one.
+         * Result field names are blank/have errors when loading a (older) saved project. Issues:(VPE-388)
+         * Single letters are captured as middle initials when lower case.
+         * Words with 's are not extracted.
+         * Words that contain mixed alpha and numeric characters are not extracted.
+     * Regex Extractor
+         * Inline results are not inserted into document when replacement value is empty string.
+         * Error message when selecting Cancel in LVF Term Lists import file.
+     * List Value Finder
+         * Error message when selecting Cancel in LVF Term Lists import file.
+         * Term matches can be found that are substrings of/overlapping larger matches.
+     * Entity Relationship Detector
+         * Adjust sentence splitting to match universal converter text conversion.
+### Visualizing Environment
+   * #### Improvements
+     * Distribution View
+         * Swap primary and secondary fields.
+     * Image Manager
+         * Update UI, optimize, add search.
+         * Make user added images accessible by all project.
+     * List Value Finder
+         * Prefix List Value Finder attributes with Term List's name.
+   * #### Fixes
+     * Image Manager
+         * Added images don't get auto-selected.
+     * Network View
+         * Find common nodes considers removed nodes..
+     * Nexus View
+         * Find common nodes considers removed nodes..
+     * Geographic View
+         * Cannot disable edge labels.
+     * Alias Fields
+         * Exception encountered while clearing Alias field from 'Optional' field. Issues:(VVE-2300)
+     * Export
+         * Export displays error dialog when secondary windows are canceled. Issues:(VVE-2305)
+     * Views
+         * View control information not visible.
+     * Views
+         * View control information not visible.
+     * Projects
+         * Temp projects are not deleted. Issues:(VVE-2309)
+### All Apps
+   * #### Fixes
+     * Universal Converter
+         * In some environments Excel conversion could crash due to dependency conflicts.
+   * #### Improvements
+### Data Manager
+   * Upgrade PostgreSQL installation from 9.4 to 14.5. Fixes security vulnerability warnings in some environments. NOTICE: It is recommended to uninstall PostgreSQL 9.4 if feasible, prior to installing Vorteks.
+   * Add "Contact Us".
+## 3.0.0.328
+07/27/2022 10:59:09
+### Visualizing Environment
+   * #### New Features
+     * Geographic View
+         * Add Measuring tool.
+         * Show distance in edge and line labels.
+         * Add GRAPHML (.graphml) export.
+     * Network View
+         * Add GRAPHML (.graphml) export.
+     * Nexus View
+         * Add GRAPHML (.graphml) export.
+   * #### Fixes
+     * Geographic View
+         * Network Analysis Grid in Geo view mislabeled columns.
+     * Export
+         * Export custom fields in a Nodes and Edges export has duplicate values.
+         * Export custom fields in a Nodes and Edges displays wrong in Excel (delimited numbers appear as one number).
+     * Dataset
+         * Create Dataset shouldn't have a sub-menu with only one item.
+         * Creating Term List after rearranging columns produces wrong values.
+### Processing Environment
+   * #### Fixes
+     * RSS Feed Monitor
+         * Enable resolving nested url links when downloading html/xml content.
+     * Non-Lexical Extractor
+         * Default email tag is for zip codes. (Issues:VPE-387)
+### All Apps
+   * #### Fixes
+     * Data
+         * Remove default lists from Data folder.
+     * Xml Tags
+         * New line in XML tags are not cleaned correctly and result in invalid xml tags.
+   * #### New Features
+     * Universal Converter
+         * Add support for GRAPHML (.graphml) files.
+## 3.0.0.317
+04/15/2022 10:12:34
+### Visualizing Environment
+   * #### Fixes
+     * Tab labels are not updated when names changed in Project Explorer. Issues:(VVE-2282)
+     * Error restoring previous VDM project from Recent Project. Issues:(VVE-2291)
+     * Document Cluster View
+         * Deadlock when building two views simultaneously.. Issues:(VVE-2172)
+         * Labels are cluttered and overlapping
+     * Distribution View
+         * Search results are not selected. Issues:(VVE-2276)
+     * Network View
+         * Search and select fades nodes/edges slowly and multiple times.. Issues:(VVE-2165)
+         * Zoom resets when adjusting scale or pressing CNTRL key while focused on scale window. Issues:(VVE-2294)
+         * Subgraphs do not appear in sidebar after remove/add
+     * Hierarchy View
+         * Labels are wrapped mid-word. Issues:(VVE-2296)
+     * Export
+         * CSV export has no value for alias fields.
+     * Open Project
+         * Opening recent project with VDM in the name causes exception. Issues:(VVE-2259)
+     * Geographic View
+         * View fails with logged exception when encountering non-geo data. Warnings are now logged with invalid values.. Issues:(VVE-2281)
+     * Nexus View
+         * Relationship edge type defaults to 'Undirected'.
+### Processing Environment
+   * #### Improvements
+     * Non-Lexical Extractor
+         * Add ability to name Non-Lex fields. Issues:(VPE-380)
+### All Apps
+   * #### Fixes
+     * Xml Tags
+         * Xml tags are not cleaned correctly and can result in invalid xml tags..
+     * Universal Converter
+         * Fix converting excel (or any) files that have commas in an element name.
+## 3.0.0.315
+02/22/2022 15:37:40
+### Visualizing Environment
+   * #### Fixes
+     * Nexus View
+         * Disabling entity mappings does not disable entity.
+         * Find related data has same dlg title as global search.
+         * Disabling an entity in view properties does not disable relationships that contain it.
+         * Building view with all Relationships deactivated locks wizard. Issues:(VVE-2273)
+         * Entities don't work with multiple fields from the same document type.
+         * Relationships don't build all-to-all.
+         * Exception encountered after opening Nexus wizard after deleting Document Type. Issues:(VVE-2272)
+         * Disallow dropping fields on relationships.
+         * Disallow dropping entities on relationships that don't have matching document types.
+         * Cannot delete dossier fields.
+         * Dosser fields are persisted between projects.
+         * Dosser fields are not auto-populated based on relationships.
+         * Dosser 'Add related' button is active when no values are selected.
+         * Nexus outline appears when scaling when option is off.
+         * Nexus outline appears when opening a saved project.
+         * Exception using node groups. Issues: (VVE-2238)
+         * Adding grouped node back into view causes child nodes to be shown.
+         * Find commonalities has wrong results.
+     * Distribution View
+         * Search and select does not zoom/highlight correctly with collapsed bins.
+     * Export
+         * Spreadsheet export doesn't update progress.
+         * Spreadsheet export is extremely slow.
+     * Available Fields
+         * Filtering by text and document type at the same time returns wrong results.
+     * All Views
+         * Create view from selected does not filter unselected values.
+         * Construction Wizard does not persist "Value Based" option.
+   * #### Improvements
+     * Nexus View
+         * Add ‘Enabled’ toggle for individual fields in entity definitions.
+         * Add 'Create dataset from edges' button in action tab.
+     * Network View
+         * Add 'Create dataset from edges' button in action tab.
+         * Find commonalities has wrong results.
+## 3.0.0.297
+01/31/2022 12:03:51
+### Processing Environment
+   * #### Fixes
+     * Universal Converter
+         * Single Text Block option is true by default.
+         * Excel - multiple sheets don't load.
+         * Spreadsheets - Text qualifier: NONE causes error.
+            All Processors
+         * Available Fields don't load.
+### Visualizing Environment
+   * #### Fixes
+     * Export
+         * Export Spreadsheet - Progress bar is dysfunctional
+     * Nexus View
+         * 'Find Related Data' doesn't populate with selected node values . Issues:(VVE-2257)
+         * 'Find Related Data' functionality is too restrictive/dysfunctional. Issues:(VVE-2257)
+         * Remove 'ID' and 'Label' options from Nexus Entity fields.
+     * Network View
+         * Changing scale shows frame around networks. Issues:(VVE-2252)
+## 3.0.0.284
+11/19/2021 09:53:31
+### Visualizing Environment
+   * #### Fixes
+     * Nexus
+         * Dossier panel do not display Date values. Issues:(VVE-2257)
+         * Error while attempting to export network analysis grid. Issues:(VVE-2251)
+     * Geographic View
+         * Selecting correlation edge in wizard nukes available fields. Issues:(VVE-2245)
+     * Nexus View
+         * Edges not being generated for all items in a nested list.
+   * #### Improvements
+     * Universal Converter
+         * Power Point converter supports merging slides into a single text block.
+     * Nexus View
+         * Put Nexus button with the rest of the view buttons.
+         * Add an options section to the construction wizard and a button for loading global mappings.
+         * Add 'Toggle Network Outline' to action tab.
+         * Add ability to merge nodes with same value from different entities (Wizard option).
+### Processing Environment
+   * #### Fixes
+     * List Value Finder
+         * Certain terms with special characters do not produce matches.
+         * Lists with phrases that start with the same terms do not always find matches. (IE: "The University of Maryland", "The University of Science and Technology").
+     * Merger
+         * Exception thrown when merge data has multiple words in column header.
+     * Application
+         * System.IO.Compression reference causes exception.
+     * DataStax
+         * Saved project with DataStax processor does not open correctly. Issues:(VPE-379)
+   * #### New Features
+     * Universal Converter
+         * Add option for Text/RTF/PDF to combine paragraphs into one text block..
+### All Apps
+   * #### Fixes
+     * VDM Folders
+         * Fix fatal exception that can occur with folder permissions.
+## 3.0.0.276
+09/29/2021 15:00:19
+### Visualizing Environment
+   * #### New Features
+     * Nexus View
+         * Add NEW Nexus View.
+         * Add NEW Nexus Mapper.
+     * Start Page with recent projects and "Get Started" shortcuts..
+     * Network View
+         * Add new "Circular" network layout.
+   * #### Fixes
+     * All Views
+         * Fix create view from selected when only 1 document is used.
+     * Startup
+         * Application crashes when multiple instances are launched simultaneously.. Issues:(VVE-2221)
+     * Correlation View
+         * Changing color legend doesn't update view colors. Issues:(VVE-2215)
+## 3.0.0.260
+07/26/2021 15:02:51
+### Visualizing Environment
+   * #### Fixes
+     * Geographic View
+         * Labels are not displayed as lat/lon. Issues:(VVE-2026)
+         * Search selection colors do not persist correctly and are erroneously applied to wrong objects. Issues:(VVE-2039)
+         * Labels are out of sync during timeline playback. Issues:(VVE-1701)
+         * Cursor show wrong icon after performing map function. Issues:(VVE-1703)
+         * Hover labels display field name not value. Issues:(VVE-2213)
+     * Application Shutdown
+         * VDM Sessions are not closed if application crashes. Issues:(VDM-92)
+     * Hierarchy View
+         * Unhandled exception when opening view properties in advanced mode.
+         * Canceling "Color By Tier" shows the option is still selected.
+         * "Color By Tier" dialogue allows removing tiers. Issues:(VVE-2122)
+         * Fix typo in "Override Labels". Issues:(VVE-2154)
+         * User can bypass selected fields restriction and build an empty view. Issues:(VVE-2140)
+         * Color by Tier incorrectly colors tier labels. Issues:(VVE-2122)
+     * Dataset View
+         * Term list search does not match beyond '<'. Issues:(VVE-2153)
+         * Duration compound fields are not sorted in numerical order. Issues:(VVE-1974)
+     * Network View
+         * Fix manual edge size after connecting to two nodes. Issues:(VVE-1319)
+         * View Info doesn't update when adding/removing manual nodes and edges. Issues:(VVE-1602)
+         * Shortest Path does not work with manual nodes. Issues:(VVE-1326)
+         * Dragging manual nodes does not reposition node sphere. Issues:(VVE-1326)
+         * Collapsing sub-graphs in 3D has incorrect position. Issues:(VVE-1816)
+         * Find Commonalities dialog persists after no results were found. Issues:(VVE-2043)
+         * Node images are not visible from the back in 3D. Issues:(VVE-1612)
+         * Using arrow keys to change the scale doesn't update the view. Issues:(VVE-1623)
+         * OpenOrd layout algorithm sometimes hangs indefinitely. Issues:(VVE-1962)
+         * Allowed to build network with no edges. Issues:(VVE-1572)
+         * Edge directionality is not persisted correctly in properties. Issues:(VVE-2146)
+     * Project Explorer
+         * Split dataset dialogue appears behind progress bar. Issues:(VVE-2139)
+     * All Views
+         * Alias property names don't appear in hover labels. Issues:(VVE-2055)
+         * Edit label button can get out of sync with the view after rebuilding. Issues:(VVE-1788)
+         * Propagate zooms in too close when selecting objects. Issues:(VVE-2143)
+         * Cannot create views from (!Filtered) dataset. Issues:(VVE-2166, VVE-1492)
+         * Objects outside of the visible view can be selected with a selection box. Issues:(VVE-1874)
+         * Search option to highlight multiple document types is available when there's only one document type. Issues:(VVE-1649)
+         * Selecting the X in Override Labels Selected Field erases field name list. Issues:(VVE-2155)
+         * Alias fields are grayed out when building views. Issues:(VVE-2216)
+     * Correlation View
+         * Removing nodes and rebuilding will show an empty view message when appropriate. Issues:(VVE-1625)
+         * Correlation Axis 1 does not reappear after being hidden. Issues:(VVE-1968)
+         * Switching 2D/3D does not retain selected nodes. Issues:(VVE-1941)
+         * Color by hops is ignored when color legend changes. Issues:(VVE-1799)
+         * Removed view property shows inconsistent numbers after removing nodes and edges and then rebuilding. Issues:(VVE-2149)
+     * Distribution View
+         * Search with color doesn't not select/color bins or nodes correctly. Issues:(VVE-1730)
+         * Select nodes colored by search selects all nodes. Issues:(VVE-1730)
+     * Hive Plot View
+         * View does not correctly fade edges when first built
+         * View can be built with only one node. Issues:(VVE-1673)
+         * Thresholds are not correctly applied to all nodes
+         * Fix edges not faded after changing color legend or multicolored option. Issues:(VVE-1810)
+     * Document Cluster View
+         * Node labels can get in a state where they will not show. Issues:(VVE-2010)
+         * Control-Click does not deselect multi-selected expanded clusters. Issues:(VVE-1977)
+         * Selecting a cluster does not highlight it in the side bar. Issues:(VVE-1825)
+         * Collapsed nodes show incorrect colors after enabling multi-colored option. Issues:(VVE-1796)
+         * Multicolored nodes doesn't persist when switching between 2D and 3D. Issues:(VVE-1773)
+         * Stopword Terms loads multiple times when cancelling dialogue. Issues:(VVE-1696)
+     * Cooccurrence Search
+         * Available fields become unselectable after removing the last selected field. Issues:(VVE-1966)
+     * 3D Views
+         * Cannot use Edit Labeling in 3D views. Issues:(VVE-2195)
+     * Stream Graph View
+         * Modifying color legends sets categories to grey. Issues:(VVE-2102)
+         * Stream graph applies color legend changes when "Allow color legend" is not enabled. Issues:(VVE-1997)
+         * Toggling 'Allow Color Legend' does not update label colors. Issues:(VVE-2007)
+         * No option to turn off category labels. Issues:(VVE-2159)
+     * Labels
+         * Transparent is a color in the label font menu. Issues:(VVE-1863)
+     * Network Analysis
+         * In Degree/Out Degree does not count bidirectional/undirected edges. Issues:(VVE-2009)
+     * Document Type
+         * Created alias cannot be deleted. Issues:(VVE-1969)
+   * #### Improvements
+     * Network View
+         * Add ability to drag-and-drop/double-click to add simple document type fields as Selected Fields.
+     * Term List View
+         * Add tokenization settings button.
+     * Document View
+         * Add tokenization settings button.
+     * Color Picker
+         * Add transparent color as "None" and show color names as tooltips.
+    * Performance
+     * Available Fields
+         * Reduce filter lag.
+   * #### New Features
+     * Export
+         * Add dataset export options for all columns and custom columns. Issues:(VVE-2201)
+     * Document Type Manager
+         * Add document type fields search/filter. Issues:(VVE-2200)
+### Processing Environment
+   * #### Fixes
+     * Application Shutdown
+         * VDM Sessions are not closed if application crashes. Issues:(VDM-92)
+     * Date Time Finder
+         * ddMMyyyy is not extracted. Issues:(VPE-320)
+         * Date/Times without spaces are not matched. Issues:(VPE-320)
+     * Directory Crawler
+         * System files throw unhandled exception. Issues:(VPE-374)
+         * Available fields doesn't show converted file's XML structure.
+         * Directory Crawler does not use universal converter to convert content to XML.
+         * Unhandled exception with filenames that contain unicode. Issues:(VPE-377)
+         * Error when attempting to access unauthorized files. Issues:(VPE-374)
+         * Cannot skip text extraction. Issues:(VPE-335)
+     * Sentiment Calculator
+         * Scores are not in Available Fields with certain input processors. Issues:(VPE-342)
+     * VDM Reader
+         * Selected VDM Folder is not set. Issues:(VPE-375)
+         * Project runs even though selected VDM folder is marked invalid.
+         * Cancelling the select folder dialogue sets the folder. Issues:(VPE-373)
+         * Folders are not checked for read permissions.
+         * Folder permissions not checked after a new login.
+     * VDM Writer
+         * Selected VDM Folder is not set. Issues:(VPE-375)
+         * Project runs even though selected VDM folder is marked invalid.
+         * Folder permissions not checked after a new login.
+     * Term List
+         * Exception encountered while attempting to create Term List from large file. Issues:(VPE-376)
+     * DataStax
+         * Password does not persist in UI when loading a saved project.
+     * Zip Writer
+         * Password is not applied to zip file. Issues:(VPE-222)
+         * Zip writer password does not work on newly created zip file. Issues:(VPE-222)
+     * XML Aggregator
+         * Changed timeout from minutes to seconds.
+         * Document limit is not always reached. Issues:(VVE-344)
+     * Zip Extractor
+         * File extensions are written twice. Issues:(VVE-348)
+         * Folders create erroneous empty files.
+     * File Writer
+         * File extensions can be written twice.
+     * XML Case Normalizer
+         * Word Upper does not capitalize every word. Issues:(VPE-319)
+     * Web Downloader
+         * Url paths shows error when populated. Issues:(VPE-223)
+     * Duplicate Filter
+         * Duplicates are not routed through fail path. Issues:(VPE-340)
+     * List Value Finder
+         * Exception encountered using Import Folder in List Value Finder processor. Issues:(VPE-368)
+     * Time Stamper
+         * Custom format field is cut off. Issues:(VPE-323)
+     * Test Data Generator
+         * Fix full names that had double spaces in them.
+     * XML Checker
+         * Processing becomes suspended using multiple XML Checkers. Issues:(VPE-369)
+     * String Cleaner
+         * Cannot use space as only char to clean.
+     * Floated panels cannot be reopened once closed after being docked to project space. Issues:(VPE-347)
+     * Input processors do not track runtime. Issues:(VPE-352)
+     * Can't move around view when zooming out. Issues:(VPE-235)
+   * #### Improvements
+     * Directory Crawler
+         * Remove unnecessary traversal of files.
+     * XML Aggregator
+         * Refactored module to have more consistent results.
+     * Engine
+         * Added shutdown event for modules that need to finalize/cleanup processes.
+   * #### New Features
+     * Case Normalizer
+         * Add option to convert remaining characters that are not being capitalized to lowercase.
+     * List Maker
+         * Add "Concatenated Terms" option for joining terms on a single line using custom delimiters.
+     * String Cleaner
+         * Add option to replace chains of the same char with one replacement.
+    * Performance
+     * Processors
+         * Reduce processor search lag.
+### Data Manager
+   * #### Fixes
+     * User and Groups
+         * Sorting button disappears. Issues:(VDM-81)
+     * Sessions
+         * Sessions are not closed after VDM crashes. Issues:(VDM-92)
+     * Users & Groups
+         * Application can crash after incorrect password is entered. Issues:(VDM-104)
+     * Connect
+         * Application can crash after trying to login with a different user. Issues:(VDM-104)
+### All Apps
+   * #### Improvements
+     * Installer
+         * Update to .NET 4.8.
+   * #### Fixes
+     * VDM Folders
+         * VDM Folder lists do not check correct permissions.
+     * Passwords
+         * Passwords that are stored for connections/dialogues don't persist, don't populate UI, and cannot be edited in UI. Issues:(VPE-241)
+     * Document Type Manager
+         * Document Types sub folders list root folder contents. Issues:(VVE-2028)
+## 3.0.0.185
+05/24/2021 10:05:55
+### Visualizing Environment
+   * #### Fixes
+     * Hive Plot View
+         * Select all does not lock selection. Issues:(VVE-1608)
+         * Box selecting empty space disables mouse over preview. Issues:(VVE-1675)
+         * Drag/Drop assignment of hover label fields is not preserved. Issues:(VVE-2168)
+         * Removed node labels are shown when selecting connected nodes/edges. Issues:(VVE-1774)
+         * Propagating to Hive Plot throws an exception. Issues:(VVE-2196)
+     * Global Search
+         * VDM Projects do not check permission when doing global search. Issues:(VVE-2197)
+     * Document Cluster View
+         * Cannot click nodes after opening a saved project. Issues:(VVE-1570)
+     * Distribution View
+         * Rectangle select does not select properly. Issues:(VVE-2194)
+     * Document View
+         * Search via hyperlink values returns results from all data. Issues:(VVE-2134)
+     * Stream Graph View
+         * Tooltip not refreshing when date/time pointer moves.
+         * Application becomes unresponsive after opening empty view. Issues:(VVE-2175)
+     * Export
+         * Web View export using Document IDs document parsing error. Issues:(VVE-2185)
+     * Import
+         * Cancelling duplicate data import disables original dataset. Issues:(VVE-2131)
+         * New document types are not removed when cancelling an import. Issues:(VVE-1922)
+     * Geographic View
+         * Error building correlation edges with compound geo points. Issues:(VVE-2191)
+         * Null exception can occur when view is closed.
+         * Edge Pattern visiblity not updated when view changes properties. Issues:(VVE-2188)
+         * Geopoints cannot be deleted from properties. Issues:(VVE-2187)
+     * Timeline
+         * Excessive loading of all document types in VDM projects.
+         * Should only load used document types in VDM projects.
+         * Timeline appears empty after toggling on/off. Issues:(VVE-2189)
+         * Multiple entries for single Document Type in VDM projects. Issues:(VVE-2181)
+         * Application becomes unresponsive when timeline tries to load empty graph.
+     * Color Legend
+         * Should only load used document types in VDM projects.
+         * Color encodings persist when opening different projects. Issues:(VVE-2179)
+         * Deleted color encodings are interactable. Issues:(VVE-2180)
+     * Document Type Manager
+         * Should only load used document types in VDM projects.
+     * Correlation View
+         * Crash when loading empty 3D view. Issues:(VVE-2174)
+         * View gets into bad state after deleting documents and saving/opening project with empty views.
+     * All Views
+         * Crash when toggling 3D grid in an empty view. Issues:(VVE-2176)
+     * Closed views cannot be reopened after using Export from Project Explorer. Issues:(VVE-2186)
+   * #### Improvements
+     * Network View
+         * 'Shortest Path' button moved to main action tab.
+     * All Views
+         * Improve label spacing, collision, and level of detail.
+         * Update DXEngine / PowerToys.
+     * Stream Graph View
+         * Reduce lag when switching tabs from other views to Stream Graph.
+        ### General
+         * List recent projects under the Open Project menu.
+     * DataStax
+         * Add support for parsing path queries.
+### Data Manager
+   * #### Fixes
+     * Users and Groups
+         * Adding new users or groups can cause several error dialogs to appear when name or password is blank. Issues:(VDM-93)
+### Processing Environment
+   * #### Fixes
+     * Canvas
+         * Zooming in to the maximum shows white canvas. Issues:(VPE-234)
+         * Fix crash that can happen when processors are stacked. Issues:(VPE-361)
+     * Directory Scanner
+         * Cannot uncheck Recursive option. Issues:(VPE-364)
+     * DataStax
+         * Fix password field being applied when logging in.
+     * Web Crawler
+         * Manual Inspection quietly stops process after timeout. Issues:(VPE-366)
+   * #### Improvements
+     * DataStax
+         * Updated parsing of graph queries and conversion into XML.
+         * Add support for parsing path queries.
+   * #### New Features
+     * DataStax
+         * Add automatic value mapping of edges and vertices (.valueMap()) which can be disabled in properties.
+### All Apps
+   * #### Improvements
+     * .NET Framework
+         * Update all projects to .NET Framework 4.7.2.
+## 3.0.0.177
+03/22/2021 11:37:27
+### All Apps
+   * #### New Features
+     * Help File
+         * Add R export help file.
+   * #### Improvements
+     * Icons
+         * Updated file association icons and add R export icons.
+### Visualizing Environment
+   * #### Fixes
+     * Network View
+         * Crash when adding/removing subgraphs. Issues:(VVE-2137)
+         * Crash occurs in certain conditions when deleting edges from properties. Issues:(VVE-2157)
+     * Hierarchy View
+         * Crash when coloring by tiers after removing nodes. Issues:(VVE-2104)
+     * Geographic View
+         * Crash occurs in certain conditions when deleting edges from properties. Issues:(VVE-2157)
+     * Timeline
+         * Exception while timeline is loading. Issues:(VVE-2182)
+         * Application crash when loading a new project while timeline is loading. Issues:(VVE-2183)
+   * #### New Features
+     * Import
+         * Add R Import functionality when exporting dataframes from R. (See https://github.com/lansdon-qualta/RVorteksExport/ for R package info)
+### Processing Environment
+   * #### Fixes
+     * Data Stax
+         * Validation for Graph Name property when in Graph mode.
+         * Available fields running entire query (slow!).
+         * Improved property parsing/xml conversion.
+         * Exception when parsing graph data that isn't vertex or edge objects.
+     * XML Checker
+         * Crash when checking non-xml documents. Issues:(VPE-363)
+   * #### New Features
+     * Web Crawler
+         * Add html inspector for manually selecting elements to include for processing on a per document basis
+     * Import
+         * Add R Import functionality when exporting dataframes from R. (See https://github.com/lansdon-qualta/RVorteksExport/ for R package info)
+### Data Manager
+   * #### New Features
+     * Import
+         * Add R Import functionality when exporting dataframes from R. (See https://github.com/lansdon-qualta/RVorteksExport/ for R package info)
+## 3.0.0.167
+03/04/2021 16:22:52
+### Visualizing Environment
+   * #### New Features
+     * Import
+         * Add option to omit "worksheet" elements when converting excel to xml. This effectively merges all worksheets into a single document type.
+### Processing Environment
+   * #### New Features
+     * Univerrsal Converter
+         * Add option to omit "worksheet" elements when converting excel to xml. This effectively merges all worksheets into a single document type.
+## 3.0.0.162
+01/27/2021 14:42:20
+### Visualizing Environment
+   * #### Fixes
+     * Network View
+         * Search and select does not work when view contains subgraphs. Issues:(VVE-2012)
+         * SubGraphs appear in network list when adding removing networks. Issues:(VVE-2137)
+         * SubGraph remains in view after expanding. Issues:(VVE-2011)
+         * Crash occurs when attempting to manipulate subgraphs. Issues:(VVE-2137)
+         * Exception when accessing/closing properties while view is still building. Issues:(VVE-2128)
+         * SNA table does not populate after shortest path. Issues:(VVE-2025)
+     * All Views
+         * Opening saved project loses visualization states (Rebuild Pending, Changes Pending, etc.). Issues:(VVE-2133)
+         * Application experiences unhandled exception when manipulating view objects. Issues:(VVE-2133)
+         * Opening documents from views that were removed from the project/database displays proper error message and no longer adds an empty dataset.
+     * Hierarchy View
+         * Add/Remove common nodes after loading a saved project causes crash. Issues:(2133)
+         * Exception encountered after selecting rows in Hierarchies panel.
+         * Crash when using Color By Tier and Tile Hierarchies options. Issues:(VVE-2104)
+     * VDM Explorer
+         * VDM Explorer does not refresh when switching users. Issues:(VVE-2135)
+     * Distribution View
+         * Exception can occur when loading a saved project that contains removed nodes/bins when adding nodes/bins to view. Issues:(VVE-2125)
+         * Browse Documents from bin panels does not open documents. Issues:(VVE-2107)
+     * Geographic View
+         * Crash when changing build properties before previous build has finished. Issues:(VVE-2116)
+         * Multiple correlation edges override each other. Issues:(VVE-2117)
+         * Correlation Nodes show values unrelated to correlation edges.
+         * Shortest path logs error when no path is found and does not show a message. Issues:(VVE-2110)
+         * Double clicking objects can open incorrect documents. Issues:(VVE-2109)
+         * Hover labels sometimes show wrong data. Issues:(VVE-1985)
+         * Network edge labels don't show correct values for associated documents.
+         * Network node labels don't show all values when assigning labels.
+         * Can't use non-string fields as edge captions. Issues:(VVE-2042)
+     * Dataset View
+         * Fix crash that can occur when previewing documents. Issues:(VVE-2124)
+     * Document Cluster View
+         * Show 3d grid becomes dysfunctional. Issues:(VVE-2003)
+     * Labels
+         * Truncated labels don't indicate how many values were removed.
+### Processing Environment
+   * #### Fixes
+     * Web Crawler
+         * Crawler does not pass correct available fields/ does not convert to xml. Issues:(VPE-354)
+         * Crawler sometimes times out when downloading larger amounts of data/pages.
+     * Date
+         * Dates are not extracted unless preceded by alphanumeric characters. Issues:(VPE-345)
+     * Processor Grid
+         * Crash when dragging multiple nodes onto same grid location. Issues:(VPE-361)
+     * Processors
+         * Processor icon names truncated. Issues:(VPE-322)
+     * Directory Crawler
+         * Extracts more text than Max Size. Issues:(VPE-359)
+     * XML Checker
+         * Unable to display large files, crashing the program. Issues:(VPE-287)
+     * Rss Feed
+         * Crash when adding a feed and changing focus of properties to something else. Issues:(VPE-358)
+     * Web Search
+         * Web search results with invalid links (404) are added to results when "Crawl First Page" is on and count towards max results.
+     * List Maker
+         * Terms not being split using delimiter. ISSUES(VPE-355)
+### All Apps
+   * #### Improvements
+     * Bug Report
+         * Update bug reporting with a new UI and options to automatically report crashes and to include logs.
+   * #### New Features
+     * Themes
+         * Add an option to sync app theme with Windows theme.
+### Data Manager
+   * #### Fixes
+     * Authentication
+         * VDM closes unexpectedly after logging in. Issues:(VDM-103)
+## 3.0.0.158
+12/07/2020 15:47:42
+### Visualizing Environment
+   * #### Fixes
+     * Geographic View
+         * Able to create view with unspecified edges. Issues:(VVE-2049)
+         * Removed nodes intractable while Global Timeline is active. Issues:(VVE-2058)
+     * Hierarchy View
+         * Saving/loading views with common nodes does not work correctly. Issues:(VVE-2101)
+         * Nodes are invisible when removing/rebuilding/joining common nodes. Issues:(VVE-2085)
+         * Various problems with saving/loading/using views that have common nodes.
+     * Dataset View
+         * Inconsistent behavior in customized column selection. Issues:(VVE-2044)
+     * Export
+         * Errors occur when opening exported documents. Issues:(VVE-2096,VVE-2097,VVE-2098)
+     * All Views
+         * Imported term lists appear blank. Issues:(VVE-1975)
+     * Network View
+         * Export SNA grid with "Open after export" option check causes error and failure to open. Issues:(VVE-2062)
+         * Export interactive web view with SNA freezes.
+         * Saving/loading projects with manual nodes/edges. Issues:(VVE-2087)
+     * Hierarchy View
+         * Adding removed nodes after rebuilding causes overlapping nodes. Issues:(VVE-2077)
+         * Removing root and rebuilding causes missing nodes. Issues:(VVE-2085)
+         * Removed nodes appear after rebuilding. Issues:(VVE-2076)
+         * Side bar contains duplicate entries.
+         * Gray edges appear when using thresholds + add/remove. Issues:(VVE-2075)
+         * Cannot remove nodes after root is removed. Issues:(VVE-2082)
+         * Removing root and rebuilding permanently removes it. Issues:(VVE-2077)
+         * Nodes missing/incorrect after removing and rebuilding. Issues:(VVE-2085)
+         * Edges in advanced mode have incorrect connections. Issues:(VVE-2080)
+         * Exception encountered after building empty view. Issues:(VVE-2084)
+     * Stream Graph View
+         * Crash when resizing/switching views. Issues:(VVE-2091)
+     * Hive Plot View
+         * Create view from selected had shared resources with its parent. Issues:(VVE-2041)
+     * Search
+         * Fix temporal searching with no start time. Issues:(VVE-2056)
+     * Dataset
+         * Split by Document Type creates dataset for all VDM documents of that type. Issues:(VVE-2090)
+     * Correlation View
+         * Exception encountered while drag/drop value field lists in wizard. Issues:(VVE-2089)
+     * Datetime date selector becomes dysfunctional by toggling fields. Issues:(VVE-2057)
+     * Searching with out of range dates selects all records. Issues:(VVE-1972)
+     * Action Tab Left/Right location preferences display grey boxes. Issues:(VVE-2088)
+   * #### Improvements
+     * Update visualization libraries.
+### Processing Environment
+   * #### Fixes
+     * Term Filter
+         * Term Files/Lists properties missing applicable features. Issues:(VPE-351)
+     * DataStax
+         * Stopping processor does not cancel long queries quickly.
+     * Web Search
+         * Each page of results starts a nested results field. Issues:(VPE-346)
+     * Timestamper
+         * Description attribute is blank when not specified.
+   * #### New Features
+     * DataStax
+         * Add support for core graphs.
+   * #### Improvements
+     * Data Stax
+         * Update to latest DSE driver.
+     * Web Search
+         * Improved web search logic and fixed incorrect xml result when errors are encountered.
+### Data Manager
+   * #### Fixes
+     * Export
+         * Able to export youtube documents. Issues:(VDM-102)
+## 3.0.0.92
+10/29/2020 10:36:17
+### Visualizing Environment
+   * #### Fixes
+     * All Views
+         * Edit labels do not work. Issues:(VVE-2002)
+         * Edit labels does not work. Issues:(VVE-2002)
+         * Thread safety for propagate. Issues:(VVE-1998)
+         * Creating a new view displays a loading bar for the timeline when it's disabled. Issues:(VVE-1948)
+         * Serialization backwards compatibility problem
+         * Opening the properties menu and changing field properties deletes custom view names.
+         * Label collision settings not working
+     * Hierarchy View
+         * Tier list arrangement does not insert value at indicator position. Issues:(VVE-2067)
+     * Dataset
+         * Progress stuck open after splitting. Issues:(VVE-2016)
+         * Signed decimal values are not in numerical order after sorting columns. Issues:(VVE-1964)
+         * Creating a New Data Set by Searching/Selecting and Then Using the Split Function Doesn't Do Anything. Issues:(VVE-1856)
+         * Splitting a Dataset by "Search All" has empty parentheses in the newly created dataset names. Issues:(VVE-1958)
+         * Adding a Column for Sticky Notes Before Adding Any to the Documents Will Cause the Notes to Not Show Up in the Dataset. Issues:(VVE-1849)
+         * Problem where fast operations would not correctly close progress bar. Issues:(VVE-2016)
+     * Timeline
+         * Clicking and dragging to change the size of the step doesn't update the steps consistently. Issues:(VVE-1961)
+     * Hive Plot View
+         * Stuck progress bar when rebuilding an empty view. Issues:(VVE-1609)
+         * Selecting nodes from sidebar locks them in. Issues:(VVE-1953)
+         * Replacing fields in hive view causes fields to be unusable. Issues:(VVE-1682)
+         * Attempting to multi-select nodes in the data tab removes rows from view. Issues:(VVE-1953)
+         * You Can't Select Multiple Nodes From the Data Tab.
+     * Project Explorer
+         * Crash when searching datasets. Issues:(VVE-2050)
+     * Projects
+         * Potential crash when switching between VDM and File projects. Issues:(VVE-2051)
+     * Stream Graph View
+         * Multiple periodicities are checked in action tab. Issues:(VVE-1991)
+         * Grid becomes desynchronized after resizing the canvas. Issues:(VVE-1988)
+         * Hover labels not working. Issues:(VVE-1996)
+         * Side bar with abbreviated values not sorting correctly. Issues:(VVE-1994)
+         * Restrict periodicity based on data timespan. Issues:(VVE-1990)
+     * Network View
+         * Problem building networks with alias node. Issues:(VVE-1970)
+         * Crash when ungrouping nodes. Issues:(VVE-2015)
+         * Double clicking a record in an SNA view doesn't pull up a a text document. Issues:(VVE-1939)
+         * Crash that can occur when coloring by SNA colors Issues:(VVE-1869)
+         * Images Can't be Assigned to Nodest. Issues:(VVE-1776)
+         * Exception encountered with number of hops and manual nodes. Issues:(VVE-2071)
+         * Collapsed subraphs in 3D have wrong position. Issues:(VVE-1816)
+     * Search
+         * Add support for search fields containing multiple doc types.
+         * Timespan and Timeseries queries not using date constraints
+         * Searching NOT with multiple delimited terms doesn't work
+         * Compound searches return all documents. Issues:(VVE-1922)
+     * Geographic View
+         * Enable GeoPoint alias fields. Issues:(VVE-697)
+         * Edges were linked across documents based on captions.
+         * Crash when building geo-networks that have optional captions set
+         * Exporting by copying to clipboard causes error. Issues:(VVE-1842)
+         * Right clicking with radius selection on screen gets rid of blue box and line, but not the red circle. Issues:(VVE-1866)
+         * Network analysis colors/hops are still visible when unable to be used. Issues:(VVE-1950)
+         * Hops and Network Analysis Colors Buttons Are Highlighted Even Though They Can't Be Used. Issues:(VVE-1807)
+         * Unable to select nodes with a left-click. Issues:(VVE-1959)
+         * Geo fields in selected fields appear as data values instead of field names. Issues:(VVE-1960)
+         * Geo View doesn't show hover labels when global timeline is active. Issues:(VVE-1902)
+         * Changing the Font Weight/Style for the Labels Doesn't Work. Issues:(VVE-1755)
+         * Exporting via webpage creates an error. Issues:(VVE-1872)
+         * Theme button in top left not in line with other options. Issues:(VVE-1714)
+         * Changing font transparency in network over geo has no effect. Issues:(VVE-1812)
+         * Changing font color with a map file (not online map) causes fatal error. Issues:(VVE-1821)
+     * Document Cluster
+         * Exception encountered while closing wizard via Windows Taskbar. Issues:(VVE-1984)
+         * Words cut off in Document Cluster View construction. Issues:(VVE-1598)
+         * Document term filter is case sensitive. Issues:(VVE-1694)
+     * Correlation View
+         * Crash when propagating. Issues:(VVE-1995)
+         * Ctrl+clicking rows in the data tab temporarily freezes VVE and creates blank rows. Issues:(VVE-1954)
+         * Cntrl-click nodes to multiselect. Issues:(VVE-1841,VVE-1860)
+         * Freeze when reopening views that require rebuilding. Issues:(VVE-2046)
+     * Image Manager
+         * Problems loading custom images.
+     * Elastic Search
+         * Cannot paste a URL into connection properties. Issues:(VPE-310)
+     * Distribution View
+         * Clear Selection Colors does not turn off after clicked. Issues:(VVE-1577)
+         * Added path to primary/secondary bin sidebar
+         * Problem with view rebuilding blank/empty
+         * Inconsistency in dataset and view being in front. Issues:(VVE-1805)
+         * Term Lists don't include all labels. Issues:(VVE-1746)
+         * Toggling bin visibility would focus hidden bins. (Use double click to focus now.) Issues:(VVE-1568)
+     * Geo Network View
+         * Geo Network doesn't allow override labels
+     * Document Cluster View
+         * Selecting nodes and clusters not displaying cluster labels properly
+         * Cluster labels sometimes invisible (due to collision)
+         * Unselected clusters not hiding labels
+     * Exception encountered while using Multi-select during view build process. Issues:(VVE-2018)
+     * Dataset split by search creates more than two datasets. Issues:(VVE-1999)
+     * Checking 'Timeline/Number line' in Panels on action tab in VVE causes fatal error. Issues:(VVE-1963)
+     * Timeline; Clicking (instead of dragging) to change the size of the slection doesn't update the views Issues:(VVE-1961)
+     * Project Explorer renaming textbox disappears when cursor is outside of the project explorer window. Issues:(VVE-1900)
+     * Removing Nodes and Refreshing the View Restores the Removed Documents. Issues:(VVE-1769)
+     * Selecting fields while making a view makes document types harder to find. Issues:(VVE-1916)
+     * Importing additional data that merges with existing document type causes blank dataset
+     * Term lists report as unsaved when re-opening a project. Issues:(VVE-1637)
+     * Import Time Labels Are Incorrect. Issues:(VVE-1859)
+     * Search Dialogue Should Show Delimiter. Issues:(VVE-1955)
+     * Dialogues should be restricted to application window size. Issues:(VVE-1957)
+     * The timeline panel stays on views even if turned off when switching between views. Issues:(VVE-1760)
+     * Time-Span should clearly denote time values (minute, hour, etc.). Issues:(VVE-1833)
+     * Add a navigation hints button for views that is hideable. Issues:(VVE-1835)
+     * Time-Span should be renamed duration. Issues:(VVE-1832)
+   * #### New Features
+     * Hierarchy View
+     * Stream Graph View
+     * Dataset split by search term
+     * Network View
+         * Add find commonalities search algorithm
+     * Timeline
+         * Add timespan compound fields to the timeline Issues:(VVE-1834)
+     * Correlation View
+         * Sub-timeline changes to reflect selected nodes and edges
+   * #### Improvements
+     * Image Manager
+         * Custom images don't load from file once imported.
+     * Ability to filter available fields by type
+     * Add option to change font size in term lists
+     * Update AB3D libraries to use nuget and the new licensing mechanism
+     * Geographic View
+         * Add node size normalization to regular geo nodes (not network). Node size is now based off weight instead of radius
+         * ANode size is now based off weight instead of radius
+         * Update MapWinGis to 5.1.1.1 compiled with VS 2017
+### Processing Environment
+   * #### Fixes
+     * RSS Feed
+         * Exception when no data is retrieved. Issues:(VPE-341)
+     * XML Checker
+         * Crashes on invalid characters . Issues:(VPE-349)
+         * Importing a broken file causes a fatal error. Issues:(VPE-292)
+     * File Writer
+         * Exceptions when writing files with the same name (Will retry now several times before failing). Issues:(VPE-262)
+         * Unable to drag and drop a folder. Issues:(VPE-248)
+     * VPE does not have Reset All Panels option in Panels Menu. Issues:(VPE-350)
+     * Fatal error with drag/drop entities in processors. Issues:(VPE-318)
+     * Misalignment of images on buttons in processors' Properties panel. Issues:(VPE-316)
+     * VPE Window does not shrink correctly. Issues:(VPE-232)
+     * Drag-and-Drop Fields option missing from Duplicate Filter. Issues:(VPE-244)
+     * Single document path properties don't overwrite fields on drag-and-drop. Issues:(VPE-314)
+     * Regex generator does not generate necessary clarifications until you hit ok. Issues:(VPE-274)
+     * Term List Editor and Regex Generator text too small to read. Issues:(VPE-273)
+     * VDM Reader
+         * Cannot connect using different credentials after initial connection. Issues:(VPE-240)
+     * VDM Writer
+         * Cannot connect using different credentials after initial connection. Issues:(VPE-240)
+     * Value Filter
+         * Value filter not failing/passing documents correctly. Issues:(VPE-339)
+     * Engine
+         * Fix processors with multiple outputs. Issues:(VPE-338,VPE-332)
+         * Inconsistent number of documents passing through processors. Issues:(VPE-332)
+         * Support for splitting data to multiple target processors. Issues:(VPE-332)
+     * XML Aggregator
+         * Shows incorrect XML structure in Available Fields. Issues:(VPE-330)
+     * XML Tester
+         * Tests do not update with changes. Issues:(VPE-337)
+         * XML Test crashes if the wizard is launched with invalid xml. Issues:(VPE-315)
+     * XML Value Splitter
+         * New Element does not appear in Available Field. Issues:(VPE-336)
+     * String Cleaner
+         * String cleaner properties cuts off a letter. Issues:(VPE-304)
+     * LVF
+         * LVF recognizes comment lines in a term list as a extraction term. Issues:(VPE-270)
+         * Opening large term lists in LVF should give a progress indication so you know something is happening. Make term lists open fast. Issues:(VVE-271)
+     * RDF Search
+         * XML Root Name is not case-sensitive in XML Checker. Issues:(VPE-293)
+         * Testing connection for large databases causes freeze/lag Issues:(VPE-277)
+         * Fetching available fields for large database causes freeze/lag Issues:(VPE-277)
+     * Regex
+         * Regex in List Value Finder does not highlight/color values found. Issues:(VPE-250)
+     * Universal Converter
+         * Converting TSV files will respect the delimited settings. (Rows per document, etc) Issues:(VPE-288)
+   * #### Improvements
+     * Web Search
+         * Getting "internet access to web search is unavailable" with valid internet connection. Check additional web search server.
+     * Xml Value Splitter
+         * Now adds single values as a result
+         * Now retains the original delimited value
+     * Universal Converter
+         * Add ability to set the starting row for Excel and Delimited Text
+         * By default, the mime type of the document is used as the root for appropriate documents with an option to use the filename as the root.
+         * Added a Starting Row setting for Excel documents Issues:(VPE-279)
+         * Added a Starting Row setting for delimited documents Issues:(VPE-279)
+### Data Manager
+   * #### Fixes
+     * VDM Help files open in 3rd party web browse. Issues:(VDM-101)
+     * Menus not disabled in sign-in screen. Issues:(VDM-85)
+     * Exception encountered while deleting Document Type. Issues:(VDM-98)
+     * Slight Misalignment in About VDM. Issues:(VDM-87)
+     * Add an indicator to VDM when duplicating database. Issues:(VDM-97)
+### All Apps
+   * #### Fixes
+     * Document Type Manager
+         * Problem with invalid doc type ids when importing a document type. Issues:(VDM-99)
+### General
+   * #### Fixes
+     * Modal progress is not centered in fullscreen mode.
+## 1.0.1.3328
+10/24/2019 10:52:12
+### Processing Environment
+   * #### Fixes
+     * LVF
+         * Term Group Tag doesn't work
+   * #### New Features
+     * RDF Search
+         * Add a new input processor that searches RDF databases/endpoints. Both SPARQL and GREMLIN query languages are supported
+   * #### Improvements
+     * Web Crawler
+         * Update web crawler library (Abot)
+## 1.0.1.3316
+10/01/2019 13:22:40
+### Visualizing Environment
+   * #### Fixes
+     * Search
+         * Unnecessary updating/querying when "search all" is selected Issues:(VVE-1724)
+         * Confusing text for "search all" directing user to choose a field Issues:(VVE-1724)
+     * Distribution View
+         * Choosing any option under the panels drop down causes crash
+     * When you undock a panel and then hide it, it cannot be reopened without re-launching VVE. Issues:(VVE-1638)
+     * Select multi-colored nodes problems in Correlation and Hive
+     * Network over geo adds unnecessary layer. Issues:(VVE-1716)
+     * Propagating Data From One Dataset View to Another Doesn't Select Anything. Issues:(VVE-1711)
+     * Pips overlapping the thumbs in timeline should be visually faded/inactive. Issues:(VVE-1693)
+     * Deleting data doesn't close tabs. Issues:(VVE-1700)
+     * Clicking an Option in Panels Drop Down Menu in Document Cluster View Causes a Crash. Issues:(VVE-1699)
+     * Attempting to select the "Timeline/Number Line" panel from the panels menu in hive view causes fatal error. Issues:(VVE-1691)
+     * Network Analysis
+         * Weight column visibility problems when rebuilding. Issues:(VVE-1722)
+     * Timeline
+         * Timeline has too much whitespace. Issues:(VVE-1709)
+         * Timeline ignores first timestamp during playback. Issues:(1692)
+     * Network Analyzer
+         * Enable tooltips for column descriptions
+     * Geo View
+         * View fails to build with map file
+   * #### New Features
+     * All Views
+         * Add ability to select all nodes that have been highlighted using search colors. (Action Tab -> Search)
+     * New Time Span Range compound field: Shows duration between start and end timestamps
+   * #### Improvements
+     * Geo View
+         * Make Geo View support https tile servers and better error handling. Update MapWinGIS to 5.0.1.0
+     * Add a compound field category to available fields
+     * Enable using compound fields in more views and within other compound fields
+     * Improve document type fields drag-and-drop and validation
+     * All Views
+         * Add panels menu to views
+### General
+   * #### Improvements
+     * Json Converter
+         * Id is added to xml if specified
+### Processing Environment
+   * #### Improvements
+     * Elastic Search
+         * Update help with valid Raw Query example
+         * Add error message from bad queries
+         * Rename search type to be "Term" instead of "Field"
+     * Add list and detail views to processors pane
+   * #### Fixes
+     * File Writer
+         * File writer fails files due to "File is opened by another process."
+     * Universal Converter
+         * CSV, Excel, HTML, and PDF converters now use the encoding setting.
+     * Term list/Regex list naming conventions are more consistent
+     * Unable to scroll prosessors' priorities
+     * Regex Generator's sample field doesn't text wrap
+     * DbReader
+         * Fix out of memory errors with larger queries
+    * DbReader - Fix out of memory problems when fetching large amounts of data.Fix
+     * DbReader
+         * Now creates on document per row.
+### Data Manager
+   * #### New Features
+     * Duplicate VDM Database - Users can create duplicate database with custom name and credentials. (Settings Menu)
+## 1.0.1.3276
+08/01/2019 15:17:12
+### Processing Environment
+   * #### Fixes
+     * Elastic Search
+         * Fix case insensitive ids to have unique windows filenames
+         * Allow username/pw and certificates at the same time
+         * Browsing for a certificate only accepts .p12 files
+     * VDM Reader
+         * Fix connection string error when reading documents. Issues:((VPE-256))
+    * ElastFix
+     * Elastic Search
+         * Fix X509 certificate handling.
+### Visualizing Environment
+   * #### Fixes
+     * Geo View
+         * Number fields possible value for geo view and can cause fatal error Issues:(VVE-1680)
+     * Export
+         * Export to csv now cleans header names so they cannot have commas or other special chars.
+     * Network View
+         * View info doesn't update when adding manual edges and nodes Issues:(VVE-1602)
+         * Allowed to add manual nodes/edges while view is building Issues:(VVE-1620)
+   * #### New Features
+     * Geo View
+         * Add network over geo feature
+### General
+   * #### Improvements
+     * Import
+         * Add support for TSV (Tab separated values) file type
+   * #### Fixes
+     * Update NPGSQL library
+### Data Manager
+   * #### Fixes
+     * Import
+         * Fix crash when importing excel files
+## 1.0.1.3256
+07/18/2019 15:46:14
+### Visualizing Environment
+   * #### Fixes
+     * Projects
+         * Add error message when project initialization fails.
+### General
+   * #### Fixes
+     * Fix strong name validation problems that occur in certain environments.
+## 1.0.1.3250
+06/03/2019 11:15:56
+### Visualizing Environment
+   * #### New Features
+     * Select multicolored nodes in visualizations from search menu
+   * #### Fixes
+     * Add a feature to Create New Term List in the Action Tab. Issues:(VVE-1628)
+     * Cancelling while switching to 3D deletes the view. Issues:(VVE-1605)
+     * Crash when opening links. Issues:(VVE-1593)
+     * Hide browsing arrows when viewing documents. Issues:(VVE-1589)
+     * Network View
+         * Ghost nodes should not appear when grouping nodes Issues:(VVE-1629)
+         * Edges no longer end up permanently highlighted after grouping Issues:(VVE-1629)
+         * All to All on selected items. Issues:(VVE-1561)
+         * Crash when selecting manual edges/nodes that don't have a connected node on one end of the edge. Issues:(VVE-1587)
+         * Crash when removing nodes in the middle of networks and rebuilding Issues:(VVE-1600)
+    * Performance
+     * Update DirectXEngine (3.2.6989)
+     * Update PowerToys (8.3.6989)
+* Installer
+   * #### Fixes
+     * Installer success screen has a typo. Issues:(VVE-1567)
+### Data Manager
+   * #### Fixes
+     * Fatal Error when all panels hidden. Issues:(VDM-84)
+     * Crash when adding a new user to a group Issues:(VDM-94)
+     * Floated windows are visible at sign in. Issues:(VDM-90)
+     * Floated windows are visible at sign in. Issues:(VDM-90)
+### Processing Environment
+   * #### Fixes
+     * Text Splitter
+         * Add Regex Generator Issues:(VPE-245)
+     * Processors now stop when there is no data coming to them and user has pressed stop. Issues:(VPE-216)
+     * Wireless Registry
+         * Can't add signals or triggers Issues:(VPE-230)
+     * Canvas Grid
+         * Crash that could occur when dropping modules on to the same place Issues:(VPE-221)
+   * #### New Features
+     * Elastic Search Input Processor
+     * Regex Generator for creating regular expression based on pattern matching. Accessible through the Term List Editor.
+## 1.0.1.3241
+04/16/2019 10:24:55
+### Visualizing Environment
+   * #### Fixes
+     * Dataset crash when rearranging columns. Issues:(VVE-1588)
+     * Network View
+         * Backwards compatibility problem when loading old projects. Issues:(VVE-1586)
+### Processing Environment
+   * #### Fixes
+     * Rules Filter
+         * Cannot add terms
+     * Satori
+         * Cannot add satori channels. Issues: (VPE-217)
+     * Document View
+         * Blank document view when there is a term list that has leading or all white space characters. I.E. ".@" or "..." Issues:(VVE-1578)
+* Database Manager
+   * #### Fixes
+     * Fatal Exception when clicking on tabs in Term Lists. Issues: (VDM-89)
+     * Fatal Error when all panels hidden. Issues: (VDM-84)
+## 1.0.1.3237
+03/27/2019 13:10:10
+### Visualizing Environment
+   * #### Fixes
+     * Network View
+         * Cannot use dates in network view. Issues:(VVE-1566)
+         * Exporting sidebar
+         * Color by network analysis colors menu items grayed out. Issues:(VVE-1565)
+         * Slow down when checking if network analysis has been run. Issues:(VVE-1565)
+         * Fix fatal error when exporting SNA grid to a file that is already open. Issues:(VVE-1562)
+     * Fatal exception from switching between log and timeline Issues:(VVE-1552)
+     * All Views
+         * Exporting to custom folders
+         * Dropping a term list on a view now uses term list color for highlighting search results. Issues:(VVE-1560)
+     * Geo View
+         * Geo view doesn't build with 500k or more records Issues:(VVE-1551)
+     * RSS Feed
+         * Unable to add new feeds
+   * #### Improvements
+     * Geo View
+         * Error handling when MapWinGIS is not installed
+### Processing Environment
+   * #### Fixes
+     * LVF
+         * Fix crash when deleting LVF from grid that contains regex lists. Issues:(VPE-215)
+### General
+   * #### Fixes
+     * Fix connecting to VDM when FIPS is enabled.
+## 1.0.1.3226
+11/30/2018 11:24:11
+### Processing Environment
+   * #### Fixes
+     * Processing is hanging if project is stop immediately after start
+     * Term list collection updating first term column
+     * Better processor validation with user friendly visual cues in the properties and on the canvas
+     * lvf
+         * Term List crash caused by already disposed objects
+         * Term list validations
+     * RegexExtractor
+         * Term list validations
+   * #### Improvements
+     * LVF
+         * Advanced cleaning options
+     * String Cleaner
+         * Add settings and more uniform API
+### Visualizing Environment
+   * #### Fixes
+     * Network View
+         * NA grid columns get stuck selected if the network properties dialog is cancelled
+     * Geo
+         * Nodes outside the bounds of the valid latitude or longitude (VVE-1549)
+         * Override node label toggle
+   * #### Improvements
+     * Geo
+         * Update MapWindow GIS to 4.9.6.1
+* Installer
+   * #### Improvements
+     * Update PostgreSQL to 9.4.19
+## 1.0.1.3221
+10/11/2018
+* Visualization Environment
+   * #### Fixes
+     * Network
+         * Fix a bug with networks where manually removing nodes could leave singletons in the view.
+     * Fix errors with memory checking during long running processes
+     * Fix some memory leaks
+     * Fix UI crash
+     * Fix bug where changes to a doct type are not saved (the data type of a field like string, number, geo point, etc)
+   * #### Improvements
+     * Network
+         * Optimization of network analysis algorithms
+             * Greatly improves/eliminates out of memory problems
+             * Greatly improves speed of calculations
+             * UI enhanced to be more concise
+             * Fix crashes that could occur during calculations
+     * UI Enhancements (timeline, actionbar, term lists, ...)
+### Processing Environment
+   * #### Improvements
+     * Available fields can now be filtered to help find fields in large/multiple xml schemas
+### Data Manager
+   * #### Fixes
+     * Fix a bug where license information wouldl not be shown
+   * #### Improvements
+     * Updated license information text to be more clear
+### All Apps
+   * #### Improvements
+     * New web page for latest (licensed) releases (http://download.qualtacon.com)
+## 1.0.1.3203
+9/4/2018
+* Breaking Change
+    * Due to security enhancements, VVE projects and VPE projects will have to be recreated. The old formats have been made invalid.
+* Visualization Environment
+   * #### Fixes
+     * Geo View
+         * No longer marks the project as having changes when opening a saved project
+     * Fix icons for document field type in document type dialog
+     * Undocked views will refresh when being re-docked
+     * Show 3D Grid in action tab
+     * Fix grayed out action tab after switching a view to 3D
+   * #### Improvements
+     * Network
+         * SNA -> Add ability to choose which statistics to calculate before building
+         * Added detection for out of memory problems when running SNA on very large views
+     * Add ability to copy/paste rows to Dataset
+     * Improved style (stylesheet) for documents
+### Processing Environment
+   * #### Fixes
+     * List Vlaue Finder
+         * Freezes/slowdowns when working very large term lists
+     * Zip Writer
+         * Fix using the password field when appropriate
+   * #### Improvements
+     * List Vlaue Finder
+         * Add preprocessing of term lists to mitigate slowness when starting to run a processor with many very
+     * Project files/db max size increased to maximum allowed. (4GB)
+     * Add Files - Heavily optimized adding thousands of files to modules. (i.e. File Reader)
+### All Apps
+   * #### Fixes
+     * Potential resource leaks
+     * Potential command injection vulnerabilities
+     * Potential null exception crashes
+     * Potential path manipulation vulnerabilities
+     * Potential "shoulder surfing" privacy issue
+   * #### Improvements
+     * Now accredited for use on JWICS!
+     * New (wix) installers with improved/simplified UI.
+     * Improved security for password entry and storage
+## 1.0.1.3170
+7/31/2018
+* Breaking Change
+    * Term lists/regex lists now use "//" to indicate a row is a comment (instead of "#")
+* Visualization Environment
+   * #### Fixes
+     * Correlation View
+         * Fix axis labels to align better and not overlap with nodes
+         * Fix faded nodes when selecting/inverting/clearing
+         * Fix problems with correlation axis layouts
+         * Fix 3D axes to be visible
+     * Network
+         * Fix moving the camera to not drag nodes
+         * Invert now uses 0 hops
+         * Fix node label visibility when dragging while node labels are off
+         * Toggling networks on/off from sidebar will hide child labels
+         * Grouping nodes will no longer show child edges when dragging instead of leaving a big network with disconnected children
+         * Fix edge thickness when weights are turned off
+         * Sidebar menus will gray out for certain items when nothing is selected
+     * Document Cluster
+         * Fix create view from selected. User can successfully build new views from resulting dataset
+         * Properties UI Fixes to not truncate text/buttons
+     * All Views
+         * Create View From Selected should open the view instead of the newly created dataset
+         * Searches will incorporate custom set labels when selecting nodes
+     * Fix for crash when there are duplicate columns in a Dataset
+     * Dropping an html file on open record prompts for import instead of opening the document in document
+   * #### Improvements
+     * Network
+         * OpenOrd algorithm has greatly improved for small networks
+         * Grouped nodes have a size max now and will increase in size based on contents
+         * Edge labels do not appear on mouse over when weights are turned off
+         * Networks with edges that all have the same weight will now be 50% of max edge width instead of 100%
+         * Collapsing subgraphs that contain subgraphs will merge the two into one subgraph item
+     * All Views
+         * Improved changes pending when modifying views
+         * Fix camera resetting when leaving the view and coming back for the first time
+     * Geo supports open map tiles server
+     * Larger Document Cluster views will automatically collapse when building
+### Processing Environment
+   * #### Fixes
+     * DbReader
+         * Fix speed problems when getting available fields (where actual query would run)
+   * #### Improvements
+     * DbReader
+         * Downloaded data has root elements named after the data instead of a generic "DataSet" tag. This allows for improved document types.
+     * VDM Writer has better error handling for duplicates
+     * Updated Universal Converter help files
+### All Apps
+   * #### Fixes
+     * Importing same document that contains a different document type will no longer cause a duplicate document error.
+   * #### Improvements
+     * Major dependency updates for all libraries
+### Data Manager
+   * #### Fixes
+     * Fix updating licenses
+    * Improvments
+     * Correctly shows application version now
+## 1.0.1.3143
+6/26/2018
+* Visualization Environment
+   * #### Improvements
+     * Geo View
+         * Updated MapWinGis library dependency
+         * Add support for local map servers
+### Processing Environment
+   * #### Fixes
+     * Db Connector
+         *  Fixes bugs with connecting to certain types of databases
+### All Apps
+   * #### Fixes
+     * Security #### Fixes
+     * Resource #### Fixes
+     * Fix for parsing port out of database addresses
+## 1.0.1.3126
+6/8/2018
+* Visualization Environment
+   * #### Fixes
+     * Term Lists
+         * Save button grays out when there are no changes to be saved
+         * Fix bug where word count/size did not update after making changes (only updates after saving)
+   * #### Improvements
+     * Settings
+         * Added the ability to customize whitespace characters when viewing Documents. (Settings->Project Tab->White Space Chars). This allows color encoding documents using termlists to parse terms that are surrounded by non-default whitespace characters such as parenthesis.
+     * Term Lists
+         * Add status message indicating if it's currently saved or if changes are pending
+### Processing Environment
+   * #### Improvements
+     * Universal Converter
+        * Now processes/converts xml files that were encoded with something other than UTF-8. This will fix problems where some languages and characters were incorrect.
+### All Apps
+   * #### Fixes
+     * Fix potential resource leaks
+## 1.0.1.3115
+4/2/2018
+* Visualization Environment
+   * #### Fixes
+     * Document Cluster
+         * Fix to work with UTF8 characters
+     * Fix for sorting/case insensitive searching with non-ascii UTF8 characters with Local Projects
+   * #### Improvements
+     * Settings
+         * Added the ability to customize whitespace characters when viewing Documents. (Settings->Project Tab->White Space Chars). This allows color encoding documents using termlists to parse terms that are surrounded by non-default whitespace characters such as parenthesis.
+     * Term Lists
+         * Add status message indicating if it's currently saved or if changes are pending
+### Processing Environment
+   * #### Fixes
+     * RSS Feed Fetcher
+         * Fix to work with UTF8 characters (non-english)
+     * File Writer
+         * Fix for gathering existing files where indices could be incorrect
+     * XML Checker
+         * Fix to work with UTF8 characters
+    * Improvments
+     * Wireless Registry
+         * Add exception handling and error logging
+### Data Manager
+   * #### Fixes
+     * Document View
+         * Fix to work with UTF8 characters
+### All Apps
+   * #### Fixes
+     * String Cleaning
+         * Fixed to work with UTF8 (non-ascii)
+## 1.0.1.3108
+3/23/2018
+* Visualization Environment
+   * #### Fixes
+     * Document Cluster
+         * Fix highlighting clusters in sidebar when selecting nodes in the view
+         * Edit Labels button does not work after rebuilding view with Edit Label toggled
+         * Fix stopword export/import extensions to use .txt
+     * Hive Plot
+         * Fix exception for empty view due to thresholds
+         * Fix building view when only 1 axis has nodes
+     * Term Lists
+         * Fix term list case sensetivity
+     * Network
+         * Fix edge visibility when changing color legend
+     * Correlation
+         * Fix sidebar refreshing when adding/removing nodes
+     * Distribution
+         * Fix duplicate secondary bins in the sidebar when removing/adding
+     * Fixes crash when unfading
+     * Fix logged error when closing windows and then hovering over the project data in the explorer
+     * Fix Error closing views after they've been closed
+     * Focusing a visual while a camera animation is already occurring will have no effect
+     * Fix Dynamic Code Evaluation: Serializable Delegate
+   * #### Improvements
+     * Document Cluster
+         * Optimize document terms
+         * Implement Ability to drop term list
+     * Update DXEngine to 2.3.6564
+     * Update PowerToys to 8.1.6548
+### Processing Environment
+   * #### Fixes
+     * Web Search
+         * Fixes hitting stop while it's running
+     * Geocoder
+         * Fix logged exception
+     * VDM Reader and Writer
+         * Fix invalidation when opening a saved project like a pro
+     * Value Filter
+         * Fix lists are backwards
+     * Database Connector
+         * Fix marks all rows of the table as waiting but does not mark them all as finished
+     * Concatenator
+         * Fix available fields
+     * Drag and Drop processor #### Fixes
+    * Improvments
+     * JSON Converter
+         * Uses title as root element if one is provided.
+     * Add Satori Processor
+     * Add Wigle Processor
+     * Add ThingSpeak Processor
+     * Add Wireless Registry Processor
+     * Removed old converter processors completely. (Pre-Universal Converter)
+     * Satori Help - Adds Windows 7 compatibility warning.
+### Data Manager
+   * #### Fixes
+     * Document Type
+         * Fix for deleting document type folders that contain document types.
+         * Fix deleting root document type folder
+     * Users/Groups
+         * Fix Everyone group is not shown in user properties by default
+     * Fix sorting number columns
+     * Fix Error logged when logging in after opening folder properties
+     * Fix export xml dlg to disallow user selected directories. We always export to mydocs/vorteks/vdm/archives/ now.
+    * Improvments
+     * Optimize web crawler cancellation
+### All Apps
+   * #### Fixes
+     * Fix potential null reference errors
+     * Fix memory leaks
+     * Fix for privacy of in memory database passwords
+     * Enhanced security measures
+## 1.0.1.3089
+11/13/2017
+* Visualization Environment
+   * #### Fixes
+     * Network
+         * Fixes crash with grouping/ungrouping multiple networks
+     * Document Type Manager
+         * Fixes crash when deleting a folder with doc types in it.
+   * #### Improvements
+     * Network
+         * Adds "Add Image To Selected" button
+     * Document Cluster
+         * Handles out of memory error and cancels view
+     * Geographic View
+         * Adds proxy settings to Geographic view construction wizard
+    * Cleanup, optimizations, and minor bug #### Fixes
+### Processing Environment
+   * #### Fixes
+     * Document view javascript error supression
+    * Improvments
+     * Clicking a processor on the grid will show help file
+     * NEW - Satori Input Processor
+     * NEW - WIGLE Input Processor
+     * NEW - ThingSpeak Input Processor
+## 1.0.1.3063
+10/13/2017
+* Visualization Environment
+   * #### Fixes
+     * Network
+         * Fix selecting edges by clicking on them
+     * Network Analysis
+         * Fixes tooltips for weight
+     * Document View
+         * Fixes closing automatically while mouse is over it
+     * All Views
+         * Non longer rebuild when removing visuals and then changing tabs
+     * Fixes importing JSON with null (invalid) characters
+     * Fixes memory errors when creating LARGE xml files.
+   * #### Improvements
+     * Network
+         * Adds new weight options (Document Ids, Occurences, Custom, Off)
+         * Adds new columns to analysis grid
+         * Nodes have weight assigned now
+     * Network Analysis
+         * Weight column is hidden when no weights are present
+         * Minor UI #### Improvements
+    * Updated VVE Help
+### Processing Environment
+   * #### Fixes
+     * Universal Converter
+         * Fixes converting JSON with null (invalid) characters
+### Data Manager
+   * #### Fixes
+     * Apps should launch in the foreground now
+## 1.0.1.3144
+9/29/2017
+* Visualization Environment
+   * #### Fixes
+     * Correlation View
+         * Clicking in the view w/ nothing selected does not reset zoom
+         * Date/Number axes are sorted correctly
+     * Network
+         * Fixes bugs with edge label visiblity and position
+         * Removing nodes/edges wil revalidate networks against thresholds (no singletons allowed!)
+         * FR layout loads default correctly
+         * Fixes problem with extra edges when from/to don't share same parent element
+         * Fix for null exception problem
+         * Fix for computation time when opening same network analysis window multiple times
+     * Document Cluster
+         * Dash added to stopwords automatically
+         * Fixes removing/rebuilding/adding back nodes
+     * Geographic View
+         * Min zoom fix
+         * Optimizations/#### Fixes for selection and labels
+         * Fixes refresh bottleneck that was causing slow downs
+     * Hive Plot View
+         * Fix edges per node threshold
+         * Fixes node positions for numerical/dates
+         * Fixes double edges when there are only 2 axes
+         * Fixes thresholds so they can't be set to 0
+     * Fixes problem that would cause documents to fail when exporting XML
+     * Fixes problem with searching Date/Time Alias fields
+     * Selection box uses theme color
+     * Camera orientation is reset when going from 3D to 2D in 3D Views
+     * Fixes problem where timeline was interferring with initial data search in VDM Projects
+   * #### Improvements
+     * Correlation View
+         * Adds some deadspace around view when resetting zoom
+         * Improved layout to avoid overlapping nodes
+     * Network
+         * Analysis grid cancel button
+         * Adds 3 new analysis stats (total weight, in weight, out weight)
+         * Edges are highlighted when both connecting nodes are connected
+         * Adds "Use Weights" option to check data for a "weight" attribute
+     * Document Clustering
+         * Terms properties UI updates
+         * Cluster names are in ALL CAPS
+     * Geographic View
+         * Adds back map properties
+     * Document View
+         * Fix for opening same document multiple times.
+     * Adds search color option to highlight objects with given color
+     * Cleaned up main window
+     * Dataset shows loading progress
+     * Color picker has proper style
+### Processing Environment
+   * #### Fixes
+     * VDM Reader
+         * Fix for timing out when reading large amounts of data
+     * Fix for truncated stats on each processor
+     * Fix misc typos
+   * #### Improvements
+     * Universal Converter
+         * Defaults to splitting excel and csv
+         * Improved error detection
+     * Entity Relationship Detector
+         * Improved sentence splitting
+### Data Manager
+   * #### Improvements
+     * "New VDM Folder" button moved to folder list toolbar
+     * Adds refresh button to vdm list control
+     * Updating project details will be persisted correctly
+### All Apps
+   * #### Fixes
+     * DateTime Parsing fix for "sept" dates that were being missed.
+   * #### Improvements
+     * Removes CefSharp browser (significantly smaller installer size)
+     * Splash screen cleaned up
