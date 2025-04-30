@@ -61,6 +61,8 @@
             margin-bottom: 20px;
         }
 
+        
+
         .download-btn {
             display: inline-block;
             padding: 15px 30px;
@@ -119,13 +121,25 @@
             <p>
                 Experience the future of data analysis with Vorteks. Download the desktop app today and unlock powerful tools to process, analyze, and visualize your data like never before.
             </p>
-            <form method="get" action="https://qualta.sharepoint.com/:u:/s/Qualta580/EVs0PMpy4I5NtCLSopZIYP0BoTr_FNinoWcxHJM6BM1SuA" style="text-align:center">
-                <button class="download-btn" type="submit"><i class="fa fa-download"></i> Vorteks 3.1.41.5 (May 1, 2024)</button>
-            </form>
-
-            <form method="get" action="Releases.html" style="text-align:center">
-                <button class="rn" type="submit">Release Notes</button>
-            </form>
+            <div class="download-buttons">
+                <div>
+                    <form method="get" action="https://qualta.sharepoint.com/:f:/s/Qualta580/EkqAS6uJXzRBgWHy7LV02pMBhtUtwTRSPwlkT1paiqxuRw">
+                        <button class="download-btn" type="submit">Vorteks 3.2.0.12</button>
+                    </form>
+                    <form method="get" action="Releases.html" style="text-align:center">
+                        <button class="rn" type="submit">Release Notes</button>
+                    </form>
+                </div>
+                <div>
+                    <form method="get" action="">
+                        <button class="download-btn" type="submit">Vorteks 4.0</button>
+                    </form>
+                    <button class="release-notes" onclick="showReleaseNotes('mac')">Release Notes</button>
+                    <form method="get" action="ReleasesV4.html" style="text-align:center">
+                        <button class="rn" type="submit">Release Notes</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
