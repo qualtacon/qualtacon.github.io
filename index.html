@@ -1,36 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://allfont.net/allfont.css?fonts=tele-marines" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vorteks</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
         body {
-            font-family: Sans-Serif;
-            color: #4194f4;
-            background: #303030;
+            overflow-x: hidden;
         }
 
-        .name {
-            font-family: 'Tele-Marines', arial;
+        .parallax-section {
+            height: 100vh;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            font-size: 48px;
             text-align: center;
+            position: relative;
         }
 
-        .btn {
-            background-color: blueviolet;
-            border: none;
+        #description {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        }
+
+        #download {
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 50px;
+            border-radius: 10px;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: green;
             color: white;
-            padding: 12px 30px;
-            cursor: pointer;
-            font-size: 16px;
-            font-family: Sans-Serif;
-            margin: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
 
-        .rn {
+        .download-btn:hover {
+            background-color: #006400;
+        }
+
+         .rn {
             background-color: transparent;
             border: none;
             color: white;
@@ -41,48 +87,51 @@
             margin: 5px;
         }
 
-        .h1 {
-            border: none;
-            color: black;
-            padding: 12px 30px;
-            font-size: 36px;
-            font-family: Sans-Serif;
-        }
-
-        .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        /* Darker background on mouse-over */
-        .btn:hover {
-            background-color: darkviolet
-        }
-
-        .rn:hover {
-            color: gray;
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .overlay {
+                padding: 30px;
+            }
+            .logo {
+                max-width: 200px;
+            }
         }
     </style>
 </head>
-<body background="Vorteks%20Download_files/blue" data-gr-c-s-loaded="true">
+<body>
+    <section id="description" class="parallax-section">
+        <div class="overlay">
+            <img src="vorteks.png" alt="Vorteks" class="logo">
+            <p>
+                Vorteks is a powerful desktop application designed for processing, analyzing, and visualizing data with unparalleled efficiency. Featuring advanced analytical tools, customizable dashboards, and stunning visualization options, Vorteks empowers data scientists, analysts, and professionals to uncover insights and present findings with clarity. Whether you're handling large datasets or creating interactive reports, Vorteks streamlines your workflow with a user-friendly interface and robust performance.
+            </p>
+        </div>
+    </section>
 
-<p>
-        <img class="center" src="vorteks_logo.png" width="256" height="256" alt="Vorteks Logo">
-        <br>
-        <img class="center" src="vorteks.png" width="386" height="44" alt="Vorteks">
-</p>
-<br>
-<br>
-<h2 style="text-align:center">
+    <section id="download" class="parallax-section">
+        <div class="overlay">
+            <h1>Download Vorteks</h1>
+            <p>
+                Experience the future of data analysis with Vorteks. Download the desktop app today and unlock powerful tools to process, analyze, and visualize your data like never before.
+            </p>
+            <form method="get" action="https://qualta.sharepoint.com/:u:/s/Qualta580/EVs0PMpy4I5NtCLSopZIYP0BoTr_FNinoWcxHJM6BM1SuA" style="text-align:center">
+                <button class="download-btn" type="submit"><i class="fa fa-download"></i> Vorteks 3.1.41.5 (May 1, 2024)</button>
+            </form>
 
-    <form method="get" action="https://qualta.sharepoint.com/:u:/s/Qualta580/EVs0PMpy4I5NtCLSopZIYP0BoTr_FNinoWcxHJM6BM1SuA" style="text-align:center">
-        <button class="btn" type="submit"><i class="fa fa-download"></i> Vorteks 3.1.41.5 (May 1, 2024)</button>
-    </form>
+            <form method="get" action="Releases.html" style="text-align:center">
+                <button class="rn" type="submit">Release Notes</button>
+            </form>
+        </div>
+    </section>
 
-    <form method="get" action="Releases.html" style="text-align:center">
-        <button class="rn" type="submit">Release Notes</button>
-    </form>
-</h2>
-
+    <script>
+        // Note: The parallax effect is achieved through CSS background-attachment: fixed
+        // No additional JavaScript is required for basic parallax
+    </script>
 </body>
 </html>
