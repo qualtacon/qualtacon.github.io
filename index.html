@@ -9,146 +9,257 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
 
         body {
-            overflow-x: hidden;
+            background-color: #f5f5f5;
+            color: #000;
         }
 
-        .parallax-section {
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+
+        nav .logo-nav {
+            max-width: 100px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #666;
+        }
+
+        .hero {
             height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero img {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            max-width: 700px;
+            font-weight: 300;
+        }
+
+        .tiles-section {
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            position: relative;
-        }
-
-        #description {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-        }
-
-        #download {
-            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-        }
-
-        .overlay {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 50px;
-            border-radius: 10px;
-            max-width: 800px;
-        }
-
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            max-width: 300px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .download-buttons {
-            display: flex;
-            justify-content: center;
             gap: 20px;
+            padding: 40px 20px;
         }
 
-        .download-btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: green;
-            color: white;
-            text-decoration: none;
+        .tile {
+            width: 45%;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .tile.windows {
+            background-image: url('https://qualtacon.github.io/vorteks_logo.png');
+            background-color: #1a1a1a; /* Dark background to complement the logo */
+            background-size: 40%; /* Ensure the logo fits within the tile without stretching */
+            background-repeat: no-repeat; /* Prevent the logo from repeating */
+            background-position: center; /* Center the logo within the tile */
+        }
+
+        .tile.mac {
+            background-image: url('https://qualtacon.github.io/v4_background.jpeg');
+        }
+
+        .tile-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: #fff;
+        }
+
+        .tile-overlay h3 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .tile-overlay .version {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .tile-overlay .description {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .tile-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tile-buttons button,
+        .tile-buttons a {
+            padding: 10px 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-transform: uppercase;
             border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .download-btn:hover {
-            background-color: #006400;
-        }
-
-         .rn {
-            background-color: transparent;
-            border: none;
-            color: white;
-            padding: 12px 30px;
             cursor: pointer;
-            font-size: 16px;
-            font-family: Sans-Serif;
-            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .tile-buttons button {
+            background-color: #3e6ae1;
+            color: #fff;
+            border: none;
+        }
+
+        .tile-buttons button:hover {
+            background-color: #3457b1;
+        }
+
+        .tile-buttons a {
+            background-color: #fff;
+            color: #000;
+            text-decoration: none;
+            border: 1px solid #ccc;
+        }
+
+        .tile-buttons a:hover {
+            background-color: #f0f0f0;
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
+            nav {
+                padding: 10px 20px;
             }
-            p {
-                font-size: 1em;
+            nav .logo-nav {
+                max-width: 80px;
             }
-            .overlay {
-                padding: 30px;
+            nav ul {
+                gap: 10px;
             }
-            .logo {
+            nav ul li a {
+                font-size: 0.8em;
+            }
+            .hero img {
                 max-width: 200px;
+            }
+            .hero p {
+                font-size: 1em;
+                padding: 0 20px;
+            }
+            .tiles-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tile {
+                width: 90%;
             }
         }
     </style>
 </head>
 <body>
-    <section id="description" class="parallax-section">
-        <div class="overlay">
-            <img src="vorteks.png" alt="Vorteks" class="logo">
-            <p>
-                Vorteks is a powerful desktop application designed for processing, analyzing, and visualizing data with unparalleled efficiency. Featuring advanced analytical tools, customizable dashboards, and stunning visualization options, Vorteks empowers data scientists, analysts, and professionals to uncover insights and present findings with clarity. Whether you're handling large datasets or creating interactive reports, Vorteks streamlines your workflow with a user-friendly interface and robust performance.
-            </p>
-        </div>
+    <nav>
+        <img src="https://qualtacon.github.io/vorteks.png" alt="Vorteks" class="logo-nav">
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Blog</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <img src="https://qualtacon.github.io/vorteks.png" alt="Vorteks">
+        <p>
+            Vorteks is a powerful desktop application designed for processing, analyzing, and visualizing data with unparalleled efficiency. Featuring advanced analytical tools, customizable dashboards, and stunning visualization options, Vorteks empowers data scientists, analysts, and professionals to uncover insights and present findings with clarity.
+        </p>
     </section>
 
-    <section id="download" class="parallax-section">
-        <div class="overlay">
-            <h1>Download Vorteks</h1>
-            <p>
-                Experience the future of data analysis with Vorteks. Download the desktop app today and unlock powerful tools to process, analyze, and visualize your data like never before.
-            </p>
-            <div class="download-buttons">
-                <div>
+    <section class="tiles-section">
+        <div class="tile windows">
+            <div class="tile-overlay">
+                <h3>Vorteks 3</h3>
+                <p class="version">Version: 3.2.0.12</p>
+                <p class="description">
+                    Vorteks 3 is a comprehensive suite consisting of three apps for data processing, storage, and visualization, with extensive development effort ensuring performance and a large set of features.
+                </p>
+                <div class="tile-buttons">
                     <form method="get" action="https://qualta.sharepoint.com/:f:/s/Qualta580/EkqAS6uJXzRBgWHy7LV02pMBWP6BT63ONgaLkTbYg09zxQ?e=9vjQ0x">
-                        <button class="download-btn" type="submit">Vorteks 3.2.0.12</button>
+                        <button type="submit">Download Now</button>
                     </form>
-                    <form method="get" action="Releases.html" style="text-align:center">
-                        <button class="rn" type="submit">Release Notes</button>
-                    </form>
+                    <a href="Releases.html">Release Notes</a>
                 </div>
-                <div>
+            </div>
+        </div>
+        <div class="tile mac">
+            <div class="tile-overlay">
+                <h3>Vorteks 4</h3>
+                <p class="version">Version: 4.0-alpha</p>
+                <p class="description">
+                    Vorteks 4 is a new all-in-one app, built from the ground up while drawing on the strengths of previous versions, introducing cloud support alongside a range of advanced features and enhancements, offering a glimpse into the future of data analysis (alpha release).
+                </p>
+                <div class="tile-buttons">
                     <form method="get" action="https://qualta.sharepoint.com/:u:/s/Qualta580/EZx2dconKD9Iv5Chg5N2bNIBy2oYTI7Q2F2Dp09LNYhGag">
-                        <button class="download-btn" type="submit">Vorteks 4.0</button>
+                        <button type="submit">Download Now</button>
                     </form>
-                    <form method="get" action="ReleasesV4.html" style="text-align:center">
-                        <button class="rn" type="submit">Release Notes</button>
-                    </form>
+                    <a href="ReleasesV4.html">Release Notes</a>
                 </div>
             </div>
         </div>
     </section>
-
-    <script>
-        // Note: The parallax effect is achieved through CSS background-attachment: fixed
-        // No additional JavaScript is required for basic parallax
-    </script>
 </body>
 </html>
