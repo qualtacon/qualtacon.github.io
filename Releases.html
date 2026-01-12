@@ -3,6 +3,32 @@
 Vorteks Release Notes
 =====================
 
+## 3.3.39.6
+01/08/2026
+
+### Processing Environment
+* Enhancements
+    * Api Reader
+        * Add support for authentication (PFX certificates, Bearer tokens, Other via custom headers).
+        * Add support for URL query parameters.
+        * Add support for custom request headers.
+        * Improved error handling and logging.
+    * Api Processor
+        * Add support for authentication (PFX certificates, Bearer tokens, Other via custom headers).
+        * Add support for URL query parameters (works with inserted document values).
+        * Add support for custom request headers (works with inserted document values).
+        * Add support for request throttling.
+        * Improved error handling and logging.
+* Fixes
+    * Api Reader / Processor
+        * Fix possible port exhaustion when making many requests.
+    * Regex Extractor
+        * Fix regexes will not run after one of the regexes fails to be parsed.
+        * Fix regex parsing error to include list/line number/bad regex
+    * List Value Finder
+        * Track results/counts on per-list basis.
+        * Fix issue where results found by two different lists would merge counts.
+
 ## 3.3.7.1
 10/17/2025
 
