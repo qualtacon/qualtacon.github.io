@@ -1,84 +1,70 @@
 <script src="https://rawcdn.githack.com/oscarmorrison/md-page/master/md-page.js"></script><noscript>
 
-## New to Version 4?
-Vorteks Version 4 (v4) is a complete rewrite of Vorteks, built on .NET 9 and WinUI 3. It brings a modern interface, improved performance, and new features to enhance the experience.
-V3 consisted of multiple applications (Data Manager, Processing Environment, Visualization Environment), while V4 combines all these functionalities into a single, cohesive application.
-V4 is designed to be more user-friendly and efficient, making it easier for users to manage, process, and visualize their data all in one place.
-V4 is not backward compatible with V3, meaning that projects created in V3 cannot be opened in V4. Users will need to recreate their projects in the new version.
+Vorteks 4 Release Notes
+=====================
 
----
+## 4.0.1336.7
+01/31/2026
 
-### V4 Differences from V3:
-- **Single application** for all functionalities (data management, processing, visualization).
-- **Application Search bar** for quick access to features and commands.
-- **Cloud Integrations**
-	- AWS
-		- AWS Single Sign-On (SSO)
-		- S3 Data Source
+## Breaking Changes
 
----
+- Saved projects will need to recreate datasets to take advantage of larger dataset support
 
-#### Data Management
-- Manage datasets, document types, documents, term lists all in one place.
-- **Term lists are shared across the entire project**, no need to import/export between different applications.
-	- Term lists now have enhanced UI for easier creation and management.
-	- No need to learn v3 text encodings to use regex terms, or replacement values, etc.
-- **Modify document types before data is imported** (during processing), or modify them after data is imported (in the document type manager).
-- **Easily disable document fields** that clutter your available fields without deleting them.
-- **Dataset Dashboards**
-	- Each dataset has a dashboard that provides insights into the data contained within it.
-	- Create widgets to visualize key metrics and statistics about your dataset.
-		- **Map Widget** to visualize geospatial data.
-		- **Graphs and Charts** to represent data distributions and trends.
-		- **Word Clouds** to highlight frequently occurring terms.
-		- **Notes** to document important information about the dataset.
-- **Document View supports color legends** to gain insights into a document at a glance.
+## New Features & Major Improvements
 
----
+- New API Processor implementation with support for multiple authentication types:  
+  None, Bearer Token, Client Certificate (PEM/PFX), plus improved validation and UX
+- Added UI and logic for toggling supported file types (MIME types) in data sources and processing
+- Introduced SupportsFileTypes to data sources + refactored MIME type collection
+- Added Shortest Path algorithm and visualization to Network view.
+- Implemented Request Throttling in API Processor / ApiRequestSetting
+- Added "Skip Last Rows" option to Universal Converter (Excel + Delimited)
+- Added "Split Rows" toggle to Excel & CSV converters
+- Introduced AlphaNumericWithDatesComparer for improved mixed-type sorting (numbers, letters, dates)
+- DbImportQueue now limits number of documents in queues, significantly reducing out-of-memory errors
+- Datasets can now handle many more documents, significantly reducing out-of-memory errors
 
-#### Color Legends have been separated into specific types
-- Document Type
-- Value
-- Term List
-- Temporal
-- Number
+## Enhancements & UX Improvements
 
----
+- Improved optional argument handling in ConverterUserSettings
+- Major refactor of UiGenerator system covering nearly all UI field types
+- Better validation UX (InfoBar, nested messages, member names, improved red border display)
+- Improved help system: better indexing, search, table of contents, localization, and file links
+- Numerous localization improvements throughout the application
+- Enhanced consistency and display of available fields templates
+- Improved error message handling (nested exceptions, cleaner logs without large stack traces)
+- Added word wrap support for error messages and many text fields
+- Better handling of large cell values in Dataset view
+- Improved widget titlebar tooltips and fixed recurse button cutoff
+- Fixed progress and state issues in DatasetWriter (no longer stuck when no documents created)
+- Sort datasets by flags and notes
+- Enabled propagating of selected columns when creating datasets from existing datasets
 
-#### Search
-- Enhanced search capabilities
-- Compound search terms
-- Separate search term types (String, Number, Temporal)
+## Important Bug Fixes
 
----
+- Fixed multiple causes of empty or failing dataset creation during import/processing
+- Fixed "Cancel All" not properly finishing document writing in processing preview
+- Resolved several Advanced Processing node/edge connection and deletion issues
+- Fixed Document Splitter error generating available fields
+- Fixed various request building, body handling, and parsing issues in API Reader/Processor
+- Fixed COM exceptions when loading saved scene views
+- Fixed map widget after Mapsui breaking changes
+- Fixed Value Filter crash after SkiaSharpView breaking changes
+- Fixed homogeneous message blinking when settings dialog is open
+- Fixed search results sorting with mixed alphanumeric and date values
+- Reduced Document View lag by switching to WinUiEditor
+- Fixed numerous drag & drop, validation, serialization, and certificate handling issues
+- Fixed row selection being cleared after sorting or searching in Dataset view
+- Fixed view info not updating after row selection in Dataset view 
 
-#### Processing
-- Easier than ever to build and run processing pipelines.
-- Double click processing modules to **quickly add them to the pipeline**.
-- **Automatically connect modules** when added to the pipeline.
-- **Module connections have smarter pathing** to avoid overlapping disparate connections.
-- **Universal Converter is built in** to the data source reader module, no need to add it separately.
-- Previewing documents as they move though a module is built in. **No need to add XML Checker anymore.** Just turn on "Preview" in the module.
-- Write processed documents **directly to a dataset** in your project. No need to move between different applications.
-- **Re-process datasets** to fix issues or apply new processing steps.
+## Technical / Infrastructure Changes
 
----
-
-#### Processing Wizard
-- **Build processors quickly** in a step-by-step manner. 
-- Contains **tutorial information** when learning how processors work.
-
----
-
-#### Visualizations
-- Visualizations are built on the new **Vulcan rendering engine**, providing better performance and more features.
-- Views are designed with more **level of detail improvements** for viewing large views when zoomed out.
-- Views can be built UP (like Nexus view in V3) where **data is added to the view incrementally** (Explore Mode)
-- Improved support for **shortcut keys**
-	- Example: Ctrl + F to search in views
-	- Esc to clear selections
-	- Esc a 2nd time to zoom all the way out (HOME)
-	- Hold Left Mouse and Right mouse buttons while moving the mouse up or down to quick scroll
-	- See "Shortcut info" in the command bar for all available shortcuts
-- Color Details
-    - **Color details in labels explain why a visual is colored a certain way**. Gain greater insight through the use of color legend than ever before!
+- Major refactoring of ProcessorNode, NetworkNode, and SceneVisualizationControl
+- Multiple HttpClient improvements (no-retry client, SocketsHttpHandler, connection cleanup)
+- Introduced ApiRequestBuilder infrastructure and dynamic UiGenDialog
+- Removed outdated/hacky code (old ApiRequestDialog, search hack for notes, etc.)
+- Expanded benchmarking infrastructure (DatasetQueryBenchmarks, LargeImportBenchmarks)
+- Updated all 3rd party libraries and licenses
+- Many unit and integration test additions/fixes (especially API and URI handling)
+- Switched to x64 platform in several areas (build pipeline, UI project)
+- Upgraded to .NET 10 including most system and Microsoft NuGet packages
