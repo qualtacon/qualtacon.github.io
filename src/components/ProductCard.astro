@@ -1,0 +1,136 @@
+---
+import type { Product } from '../data/products';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<article class="product-card" style={`--accent: ${product.accent}`}>
+  <div class="product-visual">
+    <img src={product.image} alt="" loading="lazy" />
+    <div class="product-visual-overlay"></div>
+  </div>
+
+  <div class="product-body">
+    <div class="product-meta">
+      <h2>{product.name}</h2>
+      <p class="version">
+        Version {product.version}
+        <span class="date">({product.date})</span>
+      </p>
+    </div>
+
+    <p class="description">{product.description}</p>
+
+    <div class="product-actions">
+      <a class="btn btn-primary" href={product.downloadUrl} target="_blank" rel="noopener noreferrer">
+        Download
+      </a>
+      <a class="btn btn-secondary" href={product.releaseNotesPath}>
+        Release notes
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .product-card {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+
+  .product-visual {
+    position: relative;
+    min-height: 320px;
+    background: var(--color-surface-elevated);
+  }
+
+  .product-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 30%,
+      rgba(11, 13, 18, 0.55) 100%
+    );
+  }
+
+  .product-card:first-child .product-visual img {
+    object-fit: contain;
+    padding: 3rem;
+    background: #11151d;
+  }
+
+  .product-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.25rem;
+  }
+
+  .product-meta h2 {
+    margin: 0 0 0.35rem;
+    font-size: 1.75rem;
+    color: #fff;
+  }
+
+  .version {
+    margin: 0 0 1.25rem;
+    color: var(--accent);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .date {
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+
+  .description {
+    margin: 0 0 1.75rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  .product-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 900px) {
+    .product-card {
+      grid-template-columns: 1fr;
+    }
+
+    .product-visual {
+      min-height: 220px;
+    }
+
+    .product-body {
+      padding: 1.75rem;
+    }
+  }
+</style>

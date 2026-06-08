@@ -1,0 +1,100 @@
+---
+const navItems = [
+  { label: 'Products', href: '/#products' },
+  { label: 'Vorteks 3', href: '/releases/v3' },
+  { label: 'Vorteks 4', href: '/releases/v4' },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <img src="/vorteks_logo.png" alt="" width="40" height="40" />
+      <span>Qualta Consulting</span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <ul>
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 100;
+    height: var(--nav-height);
+    background: rgba(11, 13, 18, 0.82);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+
+  .brand:hover {
+    color: #fff;
+  }
+
+  .brand img {
+    border-radius: 8px;
+    object-fit: contain;
+    background: var(--color-surface);
+  }
+
+  nav ul {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  nav a:hover {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 768px) {
+    nav ul {
+      gap: 1rem;
+    }
+
+    nav a {
+      font-size: 0.75rem;
+    }
+
+    .brand span {
+      display: none;
+    }
+  }
+</style>

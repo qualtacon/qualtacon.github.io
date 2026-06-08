@@ -1,0 +1,84 @@
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container hero-content">
+    <p class="eyebrow">Business Intelligence &amp; Data Analysis</p>
+    <h1>Turn complex data into clear, actionable insight.</h1>
+    <p class="lead">
+      For over a decade, Qualta Consulting has excelled in information visualization.
+      That expertise powers the Vorteks software suite — built for analysts, data scientists,
+      and teams who need advanced processing, storage, and visualization in one place.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#products">Explore Vorteks</a>
+      <a class="btn btn-secondary" href="/releases/v4">Latest release notes</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: calc(100vh - var(--nav-height));
+    display: flex;
+    align-items: center;
+    padding: calc(var(--nav-height) + 3rem) 0 4rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(11, 13, 18, 0.92) 0%, rgba(11, 13, 18, 0.72) 45%, rgba(62, 106, 225, 0.18) 100%),
+      url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80')
+        center / cover no-repeat;
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 760px;
+  }
+
+  .eyebrow {
+    margin: 0 0 1rem;
+    color: var(--color-accent-hover);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 3.75rem);
+    font-weight: 400;
+    line-height: 1.08;
+    color: #fff;
+  }
+
+  .lead {
+    margin: 0 0 2rem;
+    font-size: 1.12rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    max-width: 62ch;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding-top: calc(var(--nav-height) + 2rem);
+      min-height: auto;
+    }
+
+    .lead {
+      font-size: 1rem;
+    }
+  }
+</style>

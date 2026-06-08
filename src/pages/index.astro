@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products } from '../data/products';
+---
+
+<BaseLayout title="Qualta Consulting">
+  <Hero />
+
+  <section id="products" class="products-section">
+    <div class="container">
+      <header class="section-header">
+        <p class="eyebrow">Software suite</p>
+        <h2>The Vorteks platform</h2>
+        <p>
+          Two generations of desktop software for processing, analyzing, and visualizing data —
+          from the mature three-app Vorteks 3 suite to the next-generation all-in-one Vorteks 4.
+        </p>
+      </header>
+
+      <div class="product-grid">
+        {products.map((product) => (
+          <ProductCard product={product} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .products-section {
+    padding: 5rem 0 6rem;
+    background:
+      radial-gradient(ellipse at top, rgba(62, 106, 225, 0.08), transparent 55%),
+      var(--color-bg);
+  }
+
+  .section-header {
+    max-width: 640px;
+    margin-bottom: 3rem;
+  }
+
+  .section-header .eyebrow {
+    margin: 0 0 0.75rem;
+    color: var(--color-accent-hover);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .section-header h2 {
+    margin: 0 0 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+    font-weight: 400;
+    color: #fff;
+  }
+
+  .section-header p {
+    margin: 0;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  .product-grid {
+    display: grid;
+    gap: 2rem;
+  }
+</style>

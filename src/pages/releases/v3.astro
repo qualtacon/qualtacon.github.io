@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReleaseNotes from '../../components/ReleaseNotes.astro';
+import V3Content from '../../content/releases/vorteks-3.md';
+---
+
+<BaseLayout
+  title="Vorteks 3 Release Notes"
+  description="Release notes and changelog for Vorteks 3."
+>
+  <ReleaseNotes
+    title="Vorteks 3"
+    subtitle="Complete changelog for the Vorteks 3 processing, storage, and visualization suite."
+    backHref="/"
+    backLabel="Back to home"
+  >
+    <V3Content />
+  </ReleaseNotes>
+</BaseLayout>
