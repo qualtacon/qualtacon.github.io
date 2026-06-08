@@ -22,7 +22,7 @@ export const products: Product[] = [
       'https://qualta.sharepoint.com/:f:/s/Qualta580/IgAW2WF3VTm-RbjzZfWRswk0ARlVtefv1582GIKP7hTbAfA?e=3GxmQR',
     releaseNotesPath: '/releases/v3',
     image: '/vorteks_logo.png',
-    accent: '#3e6ae1',
+    accent: '#5b8def',
   },
   {
     id: 'v4',
