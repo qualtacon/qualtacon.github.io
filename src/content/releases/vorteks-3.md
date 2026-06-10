@@ -220,7 +220,7 @@ Vorteks 3 Release Notes
      * Updated Visualization libraries to the latest version
 
 ## 3.1.0.113
-2/29/2024 13:04:00
+2/29/2024
 ### Processing Environment
 *  Fixes
      * Cancel Save As Window closes VPE. Issues:(VPE-424)
@@ -283,7 +283,7 @@ Vorteks 3 Release Notes
      * VDM Projects
          * Invalid host address crashes VVE. Issues:(VVE-2390)
 ## 3.1.0.94
-12/5/2023 13:55:00
+12/5/2023
 ### Visualizing Environment
 *  Fixes
      * Color Legend
@@ -309,7 +309,7 @@ Vorteks 3 Release Notes
          * Added warning when using XML Checker in conjunction with List Maker or VVE Writer. The checker can cause writers to timeout prematurely.
          * Added timeout setting.
 ## 3.1.0.87
-10/23/2023 14:26:15
+10/23/2023
 ### Visualizing Environment
    * ### General
      * Hierarchy View
@@ -385,7 +385,7 @@ Vorteks 3 Release Notes
      * README
          * Update README file with installer notes.
 ## 3.1.0.30
-07/26/2023 10:35:22
+07/26/2023
 ### Visualizing Environment
 *  Improvements
      * Auto-clean old temp and import files.
@@ -417,7 +417,7 @@ Vorteks 3 Release Notes
 *  Improvements
      * Allow Drag-and-Drop files onto term lists.
 ## 3.1.0.5
-04/27/2023 12:34:20
+04/27/2023
 ### Visualizing Environment
 *  Improvements
      * Export
@@ -456,7 +456,7 @@ Vorteks 3 Release Notes
      * VVE Writer
          * Add new output module that will automatically launch VVE and start an import dlg..
 ## 3.0.0.361
-02/08/2023 22:32:45
+02/08/2023
 ### Visualizing Environment
 *  Improvements
      * Dataset View
@@ -485,13 +485,13 @@ Vorteks 3 Release Notes
      * UniversalConverter
          * CSV converter extracts blank lines.
 ## 3.0.0.353
-12/21/2022 10:06:36
+12/21/2022
 ### Processing Environment
 *  New Features
      * Open Search
          * Add support for OpenSearch and ElasticSearch up to v7.10
 ## 3.0.0.347
-12/09/2022 03:06:36
+12/09/2022
 ### Visualizing Environment
 *  Fixes
      * Network View
@@ -504,7 +504,7 @@ Vorteks 3 Release Notes
      * List Maker
          * List maker - Max Terms Per String is restricted to one digit. Issues:(VPE-410)
 ## 3.0.0.340
-11/7/2022 9:52:00
+11/7/2022
 ### Processing Environment
 *  Improvements
      * Merger
@@ -569,7 +569,7 @@ Vorteks 3 Release Notes
    * Upgrade PostgreSQL installation from 9.4 to 14.5. Fixes security vulnerability warnings in some environments. NOTICE: It is recommended to uninstall PostgreSQL 9.4 if feasible, prior to installing Vorteks.
    * Add "Contact Us".
 ## 3.0.0.328
-07/27/2022 10:59:09
+07/27/2022
 ### Visualizing Environment
 *  New Features
      * Geographic View
@@ -605,7 +605,7 @@ Vorteks 3 Release Notes
      * Universal Converter
          * Add support for GRAPHML (.graphml) files.
 ## 3.0.0.317
-04/15/2022 10:12:34
+04/15/2022
 ### Visualizing Environment
 *  Fixes
      * Tab labels are not updated when names changed in Project Explorer. Issues:(VVE-2282)
@@ -640,7 +640,7 @@ Vorteks 3 Release Notes
      * Universal Converter
          * Fix converting excel (or any) files that have commas in an element name.
 ## 3.0.0.315
-02/22/2022 15:37:40
+02/22/2022
 ### Visualizing Environment
 *  Fixes
      * Nexus View
@@ -680,7 +680,7 @@ Vorteks 3 Release Notes
          * Add 'Create dataset from edges' button in action tab.
          * Find commonalities has wrong results.
 ## 3.0.0.297
-01/31/2022 12:03:51
+01/31/2022
 ### Processing Environment
 *  Fixes
      * Universal Converter
@@ -700,7 +700,7 @@ Vorteks 3 Release Notes
      * Network View
          * Changing scale shows frame around networks. Issues:(VVE-2252)
 ## 3.0.0.284
-11/19/2021 09:53:31
+11/19/2021
 ### Visualizing Environment
 *  Fixes
      * Nexus
@@ -737,7 +737,7 @@ Vorteks 3 Release Notes
      * VDM Folders
          * Fix fatal exception that can occur with folder permissions.
 ## 3.0.0.276
-09/29/2021 15:00:19
+09/29/2021
 ### Visualizing Environment
 *  New Features
      * Nexus View
@@ -754,7 +754,7 @@ Vorteks 3 Release Notes
      * Correlation View
          * Changing color legend doesn't update view colors. Issues:(VVE-2215)
 ## 3.0.0.260
-07/26/2021 15:02:51
+07/26/2021
 ### Visualizing Environment
 *  Fixes
      * Geographic View
@@ -950,7 +950,7 @@ Vorteks 3 Release Notes
      * Document Type Manager
          * Document Types sub folders list root folder contents. Issues:(VVE-2028)
 ## 3.0.0.185
-05/24/2021 10:05:55
+05/24/2021
 ### Visualizing Environment
 *  Fixes
      * Hive Plot View
@@ -1037,7 +1037,7 @@ Vorteks 3 Release Notes
      * .NET Framework
          * Update all projects to .NET Framework 4.7.2.
 ## 3.0.0.177
-03/22/2021 11:37:27
+03/22/2021
 ### All Apps
 *  New Features
      * Help File
@@ -1079,7 +1079,7 @@ Vorteks 3 Release Notes
      * Import
          * Add R Import functionality when exporting dataframes from R.
 ## 3.0.0.167
-03/04/2021 16:22:52
+03/04/2021
 ### Visualizing Environment
 *  New Features
      * Import
@@ -1089,7 +1089,7 @@ Vorteks 3 Release Notes
      * Univerrsal Converter
          * Add option to omit "worksheet" elements when converting excel to xml. This effectively merges all worksheets into a single document type.
 ## 3.0.0.162
-01/27/2021 14:42:20
+01/27/2021
 ### Visualizing Environment
 *  Fixes
      * Network View
@@ -1161,7 +1161,7 @@ Vorteks 3 Release Notes
      * Authentication
          * VDM closes unexpectedly after logging in. Issues:(VDM-103)
 ## 3.0.0.158
-12/07/2020 15:47:42
+12/07/2020
 ### Visualizing Environment
 *  Fixes
      * Geographic View
@@ -1230,7 +1230,7 @@ Vorteks 3 Release Notes
      * Export
          * Able to export youtube documents. Issues:(VDM-102)
 ## 3.0.0.92
-10/29/2020 10:36:17
+10/29/2020
 ### Visualizing Environment
 *  Fixes
      * All Views
@@ -1433,7 +1433,7 @@ Vorteks 3 Release Notes
 *  Fixes
      * Modal progress is not centered in fullscreen mode.
 ## 1.0.1.3328
-10/24/2019 10:52:12
+10/24/2019
 ### Processing Environment
 *  Fixes
      * LVF
@@ -1445,7 +1445,7 @@ Vorteks 3 Release Notes
      * Web Crawler
          * Update web crawler library (Abot)
 ## 1.0.1.3316
-10/01/2019 13:22:40
+10/01/2019
 ### Visualizing Environment
 *  Fixes
      * Search
@@ -1510,7 +1510,7 @@ Vorteks 3 Release Notes
 *  New Features
      * Duplicate VDM Database - Users can create duplicate database with custom name and credentials. (Settings Menu)
 ## 1.0.1.3276
-08/01/2019 15:17:12
+08/01/2019
 ### Processing Environment
 *  Fixes
      * Elastic Search
@@ -1545,7 +1545,7 @@ Vorteks 3 Release Notes
      * Import
          * Fix crash when importing excel files
 ## 1.0.1.3256
-07/18/2019 15:46:14
+07/18/2019
 ### Visualizing Environment
 *  Fixes
      * Projects
@@ -1554,7 +1554,7 @@ Vorteks 3 Release Notes
 *  Fixes
      * Fix strong name validation problems that occur in certain environments.
 ## 1.0.1.3250
-06/03/2019 11:15:56
+06/03/2019
 ### Visualizing Environment
 *  New Features
      * Select multicolored nodes in visualizations from search menu
@@ -1594,7 +1594,7 @@ Vorteks 3 Release Notes
      * Elastic Search Input Processor
      * Regex Generator for creating regular expression based on pattern matching. Accessible through the Term List Editor.
 ## 1.0.1.3241
-04/16/2019 10:24:55
+04/16/2019
 ### Visualizing Environment
 *  Fixes
      * Dataset crash when rearranging columns. Issues:(VVE-1588)
@@ -1613,7 +1613,7 @@ Vorteks 3 Release Notes
      * Fatal Exception when clicking on tabs in Term Lists. Issues: (VDM-89)
      * Fatal Error when all panels hidden. Issues: (VDM-84)
 ## 1.0.1.3237
-03/27/2019 13:10:10
+03/27/2019
 ### Visualizing Environment
 *  Fixes
      * Network View
@@ -1641,7 +1641,7 @@ Vorteks 3 Release Notes
 *  Fixes
      * Fix connecting to VDM when FIPS is enabled.
 ## 1.0.1.3226
-11/30/2018 11:24:11
+11/30/2018
 ### Processing Environment
 *  Fixes
      * Processing is hanging if project is stop immediately after start

@@ -1,7 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReleaseNotes from '../../components/ReleaseNotes.astro';
-import V4Content from '../../content/releases/vorteks-4.md';
+import v4Notes from '../../content/releases/vorteks-4.md?raw';
+import { parseReleaseNotes } from '../../lib/parseReleaseNotes';
+
+const sections = parseReleaseNotes(v4Notes);
 ---
 
 <BaseLayout
@@ -13,7 +16,6 @@ import V4Content from '../../content/releases/vorteks-4.md';
     subtitle="Complete changelog for the next-generation all-in-one Vorteks application."
     backHref="/"
     backLabel="Back to home"
-  >
-    <V4Content />
-  </ReleaseNotes>
+    sections={sections}
+  />
 </BaseLayout>

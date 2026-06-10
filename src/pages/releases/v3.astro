@@ -1,7 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReleaseNotes from '../../components/ReleaseNotes.astro';
-import V3Content from '../../content/releases/vorteks-3.md';
+import v3Notes from '../../content/releases/vorteks-3.md?raw';
+import { parseReleaseNotes } from '../../lib/parseReleaseNotes';
+
+const sections = parseReleaseNotes(v3Notes);
 ---
 
 <BaseLayout
@@ -13,7 +16,6 @@ import V3Content from '../../content/releases/vorteks-3.md';
     subtitle="Complete changelog for the Vorteks 3 processing, storage, and visualization suite."
     backHref="/"
     backLabel="Back to home"
-  >
-    <V3Content />
-  </ReleaseNotes>
+    sections={sections}
+  />
 </BaseLayout>
