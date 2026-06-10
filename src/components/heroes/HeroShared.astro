@@ -1,0 +1,23 @@
+<style is:global>
+  .hero-variant {
+    position: relative;
+    min-height: calc(100vh - var(--nav-height));
+    display: flex;
+    align-items: center;
+    padding: calc(var(--nav-height) + 3rem) 0 4rem;
+    overflow: hidden;
+  }
+
+  .hero-variant .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #0b0d12 0%, #0f1420 50%, #0b0d12 100%);
+  }
+
+  @media (max-width: 768px) {
+    .hero-variant {
+      padding-top: calc(var(--nav-height) + 2rem);
+      min-height: auto;
+    }
+  }
+</style>
