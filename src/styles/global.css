@@ -127,6 +127,26 @@ p {
   border-color: rgba(255, 255, 255, 0.18);
 }
 
+.btn-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.btn-group .btn {
+  width: 100%;
+}
+
+/* Desktop: primary on the right (secondary left) */
+.btn-group .btn-secondary {
+  order: 1;
+}
+
+.btn-group .btn-primary {
+  order: 2;
+}
+
 .prose {
   color: var(--color-text-muted);
   font-size: 0.98rem;
@@ -191,5 +211,18 @@ p {
 
   .container {
     width: min(100% - 1.5rem, var(--max-width));
+  }
+
+  /* Mobile: primary first (on top), full-width stack */
+  .btn-group {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-group .btn-primary {
+    order: 1;
+  }
+
+  .btn-group .btn-secondary {
+    order: 2;
   }
 }
