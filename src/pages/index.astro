@@ -3,6 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { products } from '../data/products';
+import { getLatestRelease } from '../lib/releases';
+
+const latestByProduct = {
+  v3: await getLatestRelease('v3'),
+  v4: await getLatestRelease('v4'),
+};
 ---
 
 <BaseLayout title="Qualta Consulting">
@@ -21,7 +27,10 @@ import { products } from '../data/products';
 
       <div class="product-grid">
         {products.map((product) => (
-          <ProductCard product={product} />
+          <ProductCard
+            product={product}
+            whatsNew={latestByProduct[product.id]?.data.whatsNew ?? []}
+          />
         ))}
       </div>
     </div>

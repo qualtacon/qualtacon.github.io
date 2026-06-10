@@ -1,12 +1,24 @@
 ---
+import ReleaseToc from './ReleaseToc.astro';
+import type { ReleaseEntry } from '../lib/releases';
+import { versionToAnchor } from '../lib/releases';
+
 interface Props {
   title: string;
   subtitle: string;
   backHref: string;
   backLabel: string;
+  releases: ReleaseEntry[];
 }
 
-const { title, subtitle, backHref, backLabel } = Astro.props;
+const { title, subtitle, backHref, backLabel, releases } = Astro.props;
+
+const renderedReleases = await Promise.all(
+  releases.map(async (release) => ({
+    release,
+    ...(await release.render()),
+  }))
+);
 ---
 
 <section class="release-page">
@@ -19,9 +31,28 @@ const { title, subtitle, backHref, backLabel } = Astro.props;
       <p class="subtitle">{subtitle}</p>
     </header>
 
-    <article class="prose release-content">
-      <slot />
-    </article>
+    <div class="release-layout">
+      <ReleaseToc releases={releases} />
+
+      <div class="release-versions">
+        {
+          renderedReleases.map(({ release, Content }) => (
+            <section
+              id={versionToAnchor(release.data.version)}
+              class="release-version"
+            >
+              <header class="release-version-header">
+                <h2>{release.data.version}</h2>
+                <time datetime={release.data.date}>{release.data.date}</time>
+              </header>
+              <article class="prose release-content">
+                <Content />
+              </article>
+            </section>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </section>
 
@@ -71,11 +102,55 @@ const { title, subtitle, backHref, backLabel } = Astro.props;
     max-width: 60ch;
   }
 
+  .release-layout {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .release-versions {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .release-version {
+    scroll-margin-top: calc(var(--nav-height) + 1rem);
+  }
+
+  .release-version-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .release-version-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--color-accent-hover);
+  }
+
+  .release-version-header time {
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+
   .release-content {
-    max-width: 820px;
-    padding: 2rem;
+    padding: 1.75rem;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
+  }
+
+  @media (max-width: 1024px) {
+    .release-layout {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
