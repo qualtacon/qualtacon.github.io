@@ -38,9 +38,9 @@ const { product } = Astro.props;
 
 <style>
   .product-card {
-    display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    gap: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
@@ -99,15 +99,15 @@ const { product } = Astro.props;
 
   .product-body {
     display: flex;
+    flex: 1;
     flex-direction: column;
-    justify-content: center;
-    padding: 2.25rem;
-    min-height: 280px;
+    justify-content: space-between;
+    padding: 2rem;
   }
 
   .product-meta h2 {
     margin: 0 0 0.35rem;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     color: #fff;
   }
 
@@ -136,15 +136,9 @@ const { product } = Astro.props;
     gap: 0.75rem;
   }
 
-  @media (max-width: 900px) {
-    .product-card {
-      grid-template-columns: 1fr;
-    }
-
-    .product-visual,
-    .product-body {
-      height: auto;
-      min-height: 220px;
+  @media (max-width: 768px) {
+    .product-visual {
+      height: 220px;
     }
 
     .product-body {

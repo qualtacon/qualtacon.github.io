@@ -8,12 +8,21 @@ const navItems = [
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/">
-      <img src="/vorteks_logo.png" alt="" width="40" height="40" />
-      <span>Qualta Consulting</span>
-    </a>
+    <a class="brand" href="/">Qualta Consulting</a>
 
-    <nav aria-label="Main navigation">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="main-nav"
+      aria-label="Open menu"
+    >
+      <span class="menu-bar" aria-hidden="true"></span>
+      <span class="menu-bar" aria-hidden="true"></span>
+      <span class="menu-bar" aria-hidden="true"></span>
+    </button>
+
+    <nav id="main-nav" class="main-nav" aria-label="Main navigation">
       <ul>
         {navItems.map((item) => (
           <li>
@@ -24,6 +33,35 @@ const navItems = [
     </nav>
   </div>
 </header>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('#main-nav');
+
+  if (toggle && nav) {
+    const closeMenu = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      nav.classList.remove('is-open');
+      document.body.classList.remove('nav-open');
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('nav-open', isOpen);
+    });
+
+    nav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) closeMenu();
+    });
+  }
+</script>
 
 <style>
   .site-header {
@@ -44,9 +82,6 @@ const navItems = [
   }
 
   .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
     color: var(--color-text);
     font-weight: 600;
     font-size: 1.05rem;
@@ -57,13 +92,43 @@ const navItems = [
     color: #fff;
   }
 
-  .brand img {
-    border-radius: 8px;
-    object-fit: contain;
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
     background: var(--color-surface);
+    cursor: pointer;
   }
 
-  nav ul {
+  .menu-bar {
+    display: block;
+    width: 18px;
+    height: 2px;
+    margin-inline: auto;
+    background: var(--color-text);
+    border-radius: 1px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .menu-toggle[aria-expanded='true'] .menu-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded='true'] .menu-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle[aria-expanded='true'] .menu-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .main-nav ul {
     display: flex;
     align-items: center;
     gap: 1.75rem;
@@ -72,7 +137,7 @@ const navItems = [
     list-style: none;
   }
 
-  nav a {
+  .main-nav a {
     color: var(--color-text-muted);
     font-size: 0.88rem;
     font-weight: 500;
@@ -80,21 +145,60 @@ const navItems = [
     letter-spacing: 0.06em;
   }
 
-  nav a:hover {
+  .main-nav a:hover {
     color: var(--color-text);
   }
 
   @media (max-width: 768px) {
-    nav ul {
-      gap: 1rem;
+    .menu-toggle {
+      display: flex;
     }
 
-    nav a {
-      font-size: 0.75rem;
+    .main-nav {
+      position: absolute;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      padding: 1rem 1.25rem 1.25rem;
+      background: rgba(11, 13, 18, 0.96);
+      border-bottom: 1px solid var(--color-border);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-0.5rem);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
     }
 
-    .brand span {
-      display: none;
+    .main-nav.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
+
+    .main-nav ul {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.35rem;
+    }
+
+    .main-nav a {
+      display: block;
+      padding: 0.75rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+    }
+
+    .main-nav a:hover {
+      background: var(--color-surface-elevated);
+    }
+
+    .brand {
+      font-size: 0.95rem;
+    }
+  }
+</style>
+
+<style is:global>
+  body.nav-open {
+    overflow: hidden;
   }
 </style>
