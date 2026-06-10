@@ -9,7 +9,7 @@ const { product } = Astro.props;
 ---
 
 <article class="product-card" style={`--accent: ${product.accent}`}>
-  <div class="product-visual">
+  <div class:list={['product-visual', product.id === 'v3' ? 'product-visual--logo' : 'product-visual--photo']}>
     <img src={product.image} alt="" loading="lazy" />
     <div class="product-visual-overlay"></div>
   </div>
@@ -56,14 +56,26 @@ const { product } = Astro.props;
 
   .product-visual {
     position: relative;
-    min-height: 320px;
+    height: 280px;
     background: var(--color-surface-elevated);
+    overflow: hidden;
   }
 
   .product-visual img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .product-visual--logo {
+    background: #11151d;
+  }
+
+  .product-visual--logo img {
+    object-fit: contain;
+    padding: 2.5rem;
   }
 
   .product-visual-overlay {
@@ -74,12 +86,15 @@ const { product } = Astro.props;
       transparent 30%,
       rgba(11, 13, 18, 0.55) 100%
     );
+    pointer-events: none;
   }
 
-  .product-card:first-child .product-visual img {
-    object-fit: contain;
-    padding: 3rem;
-    background: #11151d;
+  .product-visual--logo .product-visual-overlay {
+    background: linear-gradient(
+      180deg,
+      transparent 55%,
+      rgba(11, 13, 18, 0.35) 100%
+    );
   }
 
   .product-body {
@@ -87,6 +102,7 @@ const { product } = Astro.props;
     flex-direction: column;
     justify-content: center;
     padding: 2.25rem;
+    min-height: 280px;
   }
 
   .product-meta h2 {
@@ -125,7 +141,9 @@ const { product } = Astro.props;
       grid-template-columns: 1fr;
     }
 
-    .product-visual {
+    .product-visual,
+    .product-body {
+      height: auto;
       min-height: 220px;
     }
 
