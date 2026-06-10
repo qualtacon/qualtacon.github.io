@@ -3,10 +3,9 @@ import type { Product } from '../data/products';
 
 interface Props {
   product: Product;
-  whatsNew?: string[];
 }
 
-const { product, whatsNew = [] } = Astro.props;
+const { product } = Astro.props;
 ---
 
 <article class="product-card" style={`--accent: ${product.accent}`}>
@@ -25,17 +24,6 @@ const { product, whatsNew = [] } = Astro.props;
     </div>
 
     <p class="description">{product.description}</p>
-
-    {whatsNew.length > 0 && (
-      <div class="whats-new">
-        <p class="whats-new-label">What's new</p>
-        <ul>
-          {whatsNew.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </div>
-    )}
 
     <div class="product-actions">
       <a class="btn btn-primary" href={product.downloadUrl} target="_blank" rel="noopener noreferrer">
@@ -137,42 +125,9 @@ const { product, whatsNew = [] } = Astro.props;
   }
 
   .description {
-    margin: 0 0 1.25rem;
+    margin: 0 0 1.75rem;
     color: var(--color-text-muted);
     line-height: 1.7;
-  }
-
-  .whats-new {
-    margin: 0 0 1.5rem;
-    padding: 1rem 1.1rem;
-    background: var(--color-accent-soft);
-    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
-    border-radius: var(--radius-sm);
-  }
-
-  .whats-new-label {
-    margin: 0 0 0.5rem;
-    color: var(--accent);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .whats-new ul {
-    margin: 0;
-    padding-left: 1.1rem;
-  }
-
-  .whats-new li {
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 0.3rem;
-  }
-
-  .whats-new li:last-child {
-    margin-bottom: 0;
   }
 
   .product-actions {

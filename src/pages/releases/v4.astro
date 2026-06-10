@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReleaseNotes from '../../components/ReleaseNotes.astro';
-import { getReleasesForProduct } from '../../lib/releases';
-
-const releases = await getReleasesForProduct('v4');
+import V4Content from '../../content/releases/vorteks-4.md';
 ---
 
 <BaseLayout
@@ -15,6 +13,7 @@ const releases = await getReleasesForProduct('v4');
     subtitle="Complete changelog for the next-generation all-in-one Vorteks application."
     backHref="/"
     backLabel="Back to home"
-    releases={releases}
-  />
+  >
+    <V4Content />
+  </ReleaseNotes>
 </BaseLayout>
