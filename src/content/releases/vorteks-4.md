@@ -1,85 +1,6 @@
 Vorteks 4 Release Notes
 =====================
 
-## 4.0.1579.0
-06/11/2026
-
-## New Features
-
-### Geographic Network
-- New geographic view with support for network visualizations overlaid on maps.
-- Support for loading map files (including GeoTIFF `.tif` layers) with proper projection handling (e.g. 3857).
-- Added default BlueMarble.tif map to Documents/Vorteks4/Maps.
-- Online and file-based map error handling, map file path configuration, and layer management.
-- Shortest path, hops, and other SNA capabilities hooked into Geo views.
-- Improved map layer ordering (nodes drawn on top of edges) and view restoration.
-
-### Python Processor Module and Script Module SDK
-- New Python Processor module for running custom Python scripts in the processor.
-
-### Presentation Mode
-- New presentation mode that hides view tabs, panels for clean viewing.
-
-### Node Context Menus and Interactions
-- New node context menus with actions such as Lock Position, Add Data for visual, and more.
-- Improvements to node selection, focus, and data addition workflows.
-- `LockButton` control and consistent locking UI across sidebars.
-- Multi-row selection support in sidebars and improved locked visual management.
-
-### Minimap
-- Complete redesign and rework of the Minimap.
-- Drag-to-resize from the corner.
-- Accurate visible area calculations using normalizers and internal zoomed-out area logic.
-- Toggle visibility via the Panels menu in non-Geo views.
-- Better integration with camera movement and layout rebuilding.
-
-### Node Merging (Merge Nodes)
-- New "Merge Nodes" feature using term lists.
-- `MergedNodeValues` for project-wide persistence of merged data.
-- `NodeMerger` and `MergedNetworkNode` implementation with tests.
-- UI updates across views, data change detection, combo box handling, and serialization fixes.
-- Dedicated help content and localization.
-
-### Network Layout Algorithms
-- Added Kamada-Kawai and Yifan-Hu layouts.
-- Significant improvements to Force-Directed Layout for large networks (Barnes-Hut repulsion, stack overflow prevention, longer run tuning).
-- `RectanglePacker` for better aspect ratio handling in visualizations.
-
-### Locked Visuals System
-- Built-in support for maintaining locked visuals across visualizations.
-- Thread-safe implementation with HashSet.
-- Consistent support in Network, Distribution, Stream Graph, and other views.
-- Sidebar enhancements for managing locked items (sorting, symbols, multi-row selection).
-
-## Improvements and Optimizations
-- Updated many dependencies to latest stable versions (WindowsAppSDK, Syncfusion, AWS SDKs, Microsoft.NET.Test.Sdk, etc.).
-- Performance improvements for large networks in layouts and rendering.
-- Minimap accuracy and performance improvements (normalizers, reduced unnecessary updates).
-- Rectangle packer for better layout performance in wide aspect ratio views.
-- Improved error handling and lifecycle management in Python processing.
-- Various refactors for sidebars, visual objects, command infrastructure, and panel management.
-- Better handling of locked visuals and reduced unnecessary updates in visualizations.
-- General stability and responsiveness improvements across the application.
-- Custom TitleBar control and improvements to window dragging behavior.
-- Flexible panel management and better tray behavior.
-- Numerous small refactors, test improvements, and localization updates.
-
-## Bug Fixes
-- Fixed application freezing when closing with pending changes from the Windows taskbar.
-- Fixed minimap covering too much of the view.
-- Hierarchy sorting crash and edges skipping tiers.
-- Multicolored nodes.
-- Panel tray and minimized panel issues when opening the app.
-- Numerous fixes for labels disappearing, edges becoming invisible, fading issues, and color problems in Network, Stream Graph, Geo, and Hierarchy views.
-- Fixed issues with loading and navigating locked visuals in Stream Graph and other visualizations.
-- Tooltip localization keys no longer displayed in the UI.
-- Various crashes and inconsistencies when working with hierarchies, sorting, collapsed networks, and data loading.
-- Font scale and projection fixes for older setups.
-- Many other stability and correctness fixes across views, sidebars, and data handling.
-
-## Other Changes
-
-
 ## 4.0.1420.10
 03/30/2026
 
@@ -188,8 +109,7 @@ Vorteks 4 Release Notes
 - Reduced Document View lag by switching to WinUiEditor
 - Fixed numerous drag & drop, validation, serialization, and certificate handling issues
 - Fixed row selection being cleared after sorting or searching in Dataset view
-- Fixed view info not updating after row selection in Dataset view
-- 
+- Fixed view info not updating after row selection in Dataset view 
 
 ## Technical / Infrastructure Changes
 
