@@ -9,7 +9,7 @@ const { product } = Astro.props;
 ---
 
 <article class="product-card" style={`--accent: ${product.accent}`}>
-  <div class:list={['product-visual', product.id === 'v3' ? 'product-visual--logo' : 'product-visual--photo']}>
+  <div class="product-visual product-visual--logo">
     <img src={product.image} alt="" loading="lazy" />
     <div class="product-visual-overlay"></div>
   </div>

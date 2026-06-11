@@ -1,9 +1,21 @@
 ---
 const navItems = [
   { label: 'Products', href: '/#products' },
-  { label: 'Vorteks 3', href: '/releases/v3' },
   { label: 'Vorteks 4', href: '/releases/v4' },
+  { label: 'Vorteks 3', href: '/releases/v3' },
 ];
+
+const pathname = Astro.url.pathname;
+
+function isNavActive(href: string): boolean {
+  const [path] = href.split('#');
+
+  if (path === '/') {
+    return pathname === '/' || pathname === '/index.html';
+  }
+
+  return pathname === path || pathname.startsWith(`${path}/`);
+}
 ---
 
 <header class="site-header">
@@ -24,11 +36,21 @@ const navItems = [
 
     <nav id="main-nav" class="main-nav" aria-label="Main navigation">
       <ul>
-        {navItems.map((item) => (
-          <li>
-            <a href={item.href}>{item.label}</a>
-          </li>
-        ))}
+        {navItems.map((item) => {
+          const active = isNavActive(item.href);
+
+          return (
+            <li>
+              <a
+                href={item.href}
+                class:list={{ 'is-active': active }}
+                aria-current={active ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   </div>
@@ -149,6 +171,10 @@ const navItems = [
     color: var(--color-text);
   }
 
+  .main-nav a.is-active {
+    color: var(--color-accent-hover);
+  }
+
   @media (max-width: 768px) {
     .menu-toggle {
       display: flex;
@@ -189,6 +215,10 @@ const navItems = [
 
     .main-nav a:hover {
       background: var(--color-surface-elevated);
+    }
+
+    .main-nav a.is-active {
+      background: var(--color-accent-soft);
     }
 
     .brand {

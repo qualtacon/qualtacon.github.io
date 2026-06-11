@@ -2,9 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReleaseNotes from '../../components/ReleaseNotes.astro';
 import v4Notes from '../../content/releases/vorteks-4.md?raw';
+import { products } from '../../data/products';
 import { parseReleaseNotes } from '../../lib/parseReleaseNotes';
 
 const sections = parseReleaseNotes(v4Notes);
+const product = products.find((entry) => entry.id === 'v4')!;
 ---
 
 <BaseLayout
@@ -17,5 +19,7 @@ const sections = parseReleaseNotes(v4Notes);
     backHref="/"
     backLabel="Back to home"
     sections={sections}
+    downloadUrl={product.downloadUrl}
+    downloadVersion={product.version}
   />
 </BaseLayout>
