@@ -56,18 +56,18 @@ const nodeById = Object.fromEntries(nodes.map((node) => [node.id, node]));
 ---
 
 <HeroShared />
-<section class="hero-variant hero-network">
+<section class="hero-variant hero-network" data-hero-network>
   <div class="hero-bg" aria-hidden="true">
     <svg class="network-graph" viewBox="0 0 600 520" preserveAspectRatio="xMidYMid slice">
       <defs>
         <linearGradient id="edge-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="rgba(91, 141, 239, 0.04)" />
-          <stop offset="50%" stop-color="rgba(91, 141, 239, 0.16)" />
-          <stop offset="100%" stop-color="rgba(91, 141, 239, 0.04)" />
+          <stop class="edge-gradient-stop" offset="0%" stop-color="rgba(91, 141, 239, 0.04)" />
+          <stop class="edge-gradient-stop edge-gradient-stop--mid" offset="50%" stop-color="rgba(91, 141, 239, 0.16)" />
+          <stop class="edge-gradient-stop" offset="100%" stop-color="rgba(91, 141, 239, 0.04)" />
         </linearGradient>
         <radialGradient id="node-gradient">
-          <stop offset="0%" stop-color="rgba(142, 180, 255, 0.32)" />
-          <stop offset="100%" stop-color="rgba(62, 106, 225, 0.18)" />
+          <stop class="node-gradient-stop" offset="0%" stop-color="rgba(142, 180, 255, 0.32)" />
+          <stop class="node-gradient-stop" offset="100%" stop-color="rgba(62, 106, 225, 0.18)" />
         </radialGradient>
         <filter id="node-glow" x="-100%" y="-100%" width="300%" height="300%">
           <feGaussianBlur stdDeviation="2" result="blur" />
@@ -128,7 +128,65 @@ const nodeById = Object.fromEntries(nodes.map((node) => [node.id, node]));
   </a>
 </section>
 
+<script>
+  const hero = document.querySelector('[data-hero-network]');
+
+  if (hero) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let ticking = false;
+
+    const updateScrollProgress = () => {
+      const progress = Math.min(Math.max(window.scrollY / hero.offsetHeight, 0), 1);
+      hero.style.setProperty('--scroll-progress', progress.toFixed(4));
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateScrollProgress);
+      }
+    };
+
+    updateScrollProgress();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', updateScrollProgress);
+
+    if (reducedMotion) {
+      hero.classList.add('is-reduced-motion');
+    }
+  }
+</script>
+
 <style>
+  .hero-network {
+    --scroll-progress: 0;
+  }
+
+  .hero-network .hero-scroll-cue {
+    opacity: calc(1 - var(--scroll-progress) * 2.5);
+    transform: translateX(-50%) translateY(calc(var(--scroll-progress) * -12px));
+    transition: opacity 0.15s ease;
+  }
+
+  .hero-network .hero-content {
+    transform: translateY(calc(var(--scroll-progress) * -28px));
+    opacity: calc(1 - var(--scroll-progress) * 0.35);
+  }
+
+  .hero-network.is-reduced-motion .hero-content,
+  .hero-network.is-reduced-motion .network-graph {
+    transform: none;
+    filter: none;
+  }
+
+  .hero-network.is-reduced-motion .hero-content {
+    opacity: calc(1 - var(--scroll-progress) * 0.4);
+  }
+
+  .hero-network.is-reduced-motion .network-graph {
+    opacity: calc(1 - var(--scroll-progress) * 0.5);
+  }
   .hero-network .hero-bg {
     background:
       radial-gradient(ellipse 90% 80% at 10% 40%, rgba(62, 106, 225, 0.14), transparent 55%),
@@ -137,36 +195,61 @@ const nodeById = Object.fromEntries(nodes.map((node) => [node.id, node]));
   }
 
   .network-graph {
-    --network-opacity: 1;
     position: absolute;
     top: 50%;
     right: -14%;
     width: 115%;
     height: 130%;
     min-width: 900px;
-    transform: translateY(-50%);
-    opacity: var(--network-opacity);
     overflow: visible;
+    transform:
+      translateY(calc(-50% - var(--scroll-progress) * 140px))
+      translateX(calc(var(--scroll-progress) * 48px))
+      scale(calc(1 + var(--scroll-progress) * 0.2))
+      rotate(calc(var(--scroll-progress) * 5deg));
+    opacity: calc(1 - var(--scroll-progress) * 0.8);
+    filter: blur(calc(var(--scroll-progress) * 4px));
+    will-change: transform, opacity, filter;
     -webkit-mask-image: linear-gradient(
       90deg,
       transparent 0%,
-      transparent 42%,
-      rgba(0, 0, 0, 0.2) 58%,
-      rgba(0, 0, 0, 0.45) 72%,
-      black 88%
+      transparent calc(42% + var(--scroll-progress) * 18%),
+      rgba(0, 0, 0, 0.2) calc(58% + var(--scroll-progress) * 12%),
+      rgba(0, 0, 0, 0.45) calc(72% + var(--scroll-progress) * 8%),
+      black calc(88% + var(--scroll-progress) * 12%)
     );
     mask-image: linear-gradient(
       90deg,
       transparent 0%,
-      transparent 42%,
-      rgba(0, 0, 0, 0.2) 58%,
-      rgba(0, 0, 0, 0.45) 72%,
-      black 88%
+      transparent calc(42% + var(--scroll-progress) * 18%),
+      rgba(0, 0, 0, 0.2) calc(58% + var(--scroll-progress) * 12%),
+      rgba(0, 0, 0, 0.45) calc(72% + var(--scroll-progress) * 8%),
+      black calc(88% + var(--scroll-progress) * 12%)
     );
   }
 
   .edges line {
     stroke-linecap: round;
+  }
+
+  .network-graph .edge-gradient-stop--mid {
+    stop-color: color-mix(
+      in srgb,
+      rgba(130, 172, 255, 0.34) calc(var(--scroll-progress) * 100%),
+      rgba(91, 141, 239, 0.16) calc((1 - var(--scroll-progress)) * 100%)
+    );
+  }
+
+  .network-graph .node-gradient-stop:first-child {
+    stop-color: color-mix(
+      in srgb,
+      rgba(176, 206, 255, 0.52) calc(var(--scroll-progress) * 100%),
+      rgba(142, 180, 255, 0.32) calc((1 - var(--scroll-progress)) * 100%)
+    );
+  }
+
+  .network-graph .nodes {
+    opacity: calc(1 - var(--scroll-progress) * 0.25);
   }
 
   @media (max-width: 768px) {
