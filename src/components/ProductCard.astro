@@ -10,6 +10,7 @@ const { product } = Astro.props;
 
 <article class="product-card" style={`--accent: ${product.accent}`}>
   <div class="product-visual product-visual--logo">
+    {product.id === 'v4' && <span class="product-badge">Latest</span>}
     <img src={product.image} alt="" loading="lazy" />
     <div class="product-visual-overlay"></div>
   </div>
@@ -27,12 +28,12 @@ const { product } = Astro.props;
       <p class="description">{product.description}</p>
     </div>
 
-    <div class="product-actions btn-group">
-      <a class="btn btn-primary" href={product.downloadUrl} target="_blank" rel="noopener noreferrer">
+    <div class="product-actions">
+      <a class="btn btn-primary product-download" href={product.downloadUrl} target="_blank" rel="noopener noreferrer">
         Download
       </a>
-      <a class="btn btn-secondary" href={product.releaseNotesPath}>
-        Release notes
+      <a class="product-release-link" href={product.releaseNotesPath}>
+        Release notes &rarr;
       </a>
     </div>
   </div>
@@ -107,6 +108,23 @@ const { product } = Astro.props;
     padding: 2rem;
   }
 
+  .product-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 1;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(11, 13, 18, 0.72);
+    backdrop-filter: blur(8px);
+    color: var(--color-accent-hover);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+
   .product-meta h2 {
     margin: 0 0 0.35rem;
     font-size: 1.5rem;
@@ -137,8 +155,31 @@ const { product } = Astro.props;
   }
 
   .product-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     margin-top: auto;
     padding-top: 1.75rem;
+  }
+
+  .product-download {
+    display: flex;
+    width: 100%;
+  }
+
+  .product-release-link {
+    margin-top: 1.35rem;
+    padding-top: 1.15rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease;
+  }
+
+  .product-release-link:hover {
+    color: var(--color-accent-hover);
   }
 
   @media (max-width: 768px) {

@@ -10,16 +10,13 @@ const product = products.find((entry) => entry.id === 'v3')!;
 ---
 
 <BaseLayout
-  title="Vorteks 3 Release Notes"
-  description="Release notes and changelog for Vorteks 3."
+  title="Vorteks 3"
+  description="Download Vorteks 3 and browse release notes for the processing, storage, and visualization suite."
 >
   <ReleaseNotes
-    title="Vorteks 3"
-    subtitle="Complete changelog for the Vorteks 3 processing, storage, and visualization suite."
+    product={product}
     backHref="/"
     backLabel="Back to home"
     sections={sections}
-    downloadUrl={product.downloadUrl}
-    downloadVersion={product.version}
   />
 </BaseLayout>

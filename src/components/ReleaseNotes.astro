@@ -1,20 +1,17 @@
 ---
 import { Marked } from 'marked';
+import type { Product } from '../data/products';
 import ReleaseToc from './ReleaseToc.astro';
 import type { ReleaseSection } from '../lib/parseReleaseNotes';
 
 interface Props {
-  title: string;
-  subtitle: string;
+  product: Product;
   backHref: string;
   backLabel: string;
   sections: ReleaseSection[];
-  downloadUrl?: string;
-  downloadVersion?: string;
 }
 
-const { title, subtitle, backHref, backLabel, sections, downloadUrl, downloadVersion } =
-  Astro.props;
+const { product, backHref, backLabel, sections } = Astro.props;
 
 const marked = new Marked({ gfm: true, breaks: true });
 const renderedSections = sections.map((section) => ({
@@ -27,47 +24,53 @@ const renderedSections = sections.map((section) => ({
   <div class="container">
     <a class="back-link" href={backHref}>&larr; {backLabel}</a>
 
-    <header class="release-header">
-      <div class="release-header-copy">
-        <p class="eyebrow">Release notes</p>
-        <h1>{title}</h1>
-        <p class="subtitle">{subtitle}</p>
+    <header class="product-hero" style={`--accent: ${product.accent}`}>
+      <div class="product-hero-logo">
+        <img src={product.image} alt="" loading="lazy" />
       </div>
-      {
-        downloadUrl && downloadVersion && (
-          <a
-            class="btn btn-primary release-download"
-            href={downloadUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download latest ({downloadVersion})
-          </a>
-        )
-      }
+
+      <div class="product-hero-copy">
+        <div class="product-title-row">
+          <h1>{product.name}</h1>
+          {product.id === 'v4' && <span class="product-badge">Latest</span>}
+        </div>
+        <p class="product-version">
+          Version {product.version}
+          <span class="date">({product.date})</span>
+        </p>
+      </div>
+
+      <a
+        class="btn btn-primary product-download"
+        href={product.downloadUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download
+      </a>
     </header>
 
     <div class="release-layout">
-      <ReleaseToc sections={sections} />
+        <ReleaseToc sections={sections} />
 
-      <div class="release-sections">
-        {
-          renderedSections.map((section, index) => (
-            <details
-              id={section.anchor}
-              class="release-version"
-              open={index === 0}
-              data-release-version
-            >
-              <summary>
-                <span class="summary-version">{section.version}</span>
-                {section.date && <time datetime={section.date}>{section.date}</time>}
-              </summary>
-              <div class="prose release-content" set:html={section.html} />
-            </details>
-          ))
-        }
-      </div>
+        <div class="release-sections">
+          {
+            renderedSections.map((section, index) => (
+              <details
+                id={section.anchor}
+                class="release-version"
+                open={index === 0}
+                data-release-version
+              >
+                <summary>
+                  <span class="summary-version">{section.version}</span>
+                  {section.date && <time datetime={section.date}>{section.date}</time>}
+                </summary>
+                <div class="prose release-content" set:html={section.html} />
+              </details>
+            ))
+          }
+        </div>
     </div>
   </div>
 </section>
@@ -147,47 +150,75 @@ const renderedSections = sections.map((section) => ({
     color: var(--color-text);
   }
 
-  .release-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
+  .product-hero {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1rem 1.25rem;
+    align-items: center;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
     border-bottom: 1px solid var(--color-border);
   }
 
-  .release-header-copy {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .release-download {
+  .product-hero-logo {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
     flex-shrink: 0;
-    white-space: nowrap;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: #11151d;
   }
 
-  .eyebrow {
-    margin: 0 0 0.5rem;
+  .product-hero-logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .product-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem 0.65rem;
+  }
+
+  .product-badge {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    border-radius: 999px;
+    background: var(--color-accent-soft);
     color: var(--color-accent-hover);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  h1 {
-    margin: 0 0 0.5rem;
+  .product-hero h1 {
+    margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: clamp(1.45rem, 2.5vw, 1.85rem);
     font-weight: 400;
     color: #fff;
   }
 
-  .subtitle {
-    margin: 0;
+  .product-version {
+    margin: 0.2rem 0 0;
     color: var(--color-text-muted);
-    max-width: 60ch;
+    font-size: 0.86rem;
+    font-weight: 500;
+  }
+
+  .date {
+    color: var(--color-text-muted);
+  }
+
+  .product-download {
+    flex-shrink: 0;
+    padding: 0.7rem 1.15rem;
+    font-size: 0.84rem;
   }
 
   .release-layout {
@@ -264,13 +295,13 @@ const renderedSections = sections.map((section) => ({
     border-top: 1px solid var(--color-border);
   }
 
-  @media (max-width: 768px) {
-    .release-header {
-      flex-direction: column;
-      align-items: stretch;
+  @media (max-width: 900px) {
+    .product-hero {
+      grid-template-columns: auto 1fr;
     }
 
-    .release-download {
+    .product-download {
+      grid-column: 1 / -1;
       width: 100%;
     }
   }
@@ -288,6 +319,16 @@ const renderedSections = sections.map((section) => ({
       margin-left: 0;
       width: 100%;
       order: 3;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .product-hero {
+      grid-template-columns: auto 1fr;
+    }
+
+    .product-download {
+      grid-column: 1 / -1;
     }
   }
 </style>
