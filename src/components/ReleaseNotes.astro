@@ -12,6 +12,7 @@ interface Props {
 }
 
 const { product, backHref, backLabel, sections } = Astro.props;
+const sdkDownloadUrl = product.sdkDownloadUrl?.trim();
 
 const marked = new Marked({ gfm: true, breaks: true });
 const renderedSections = sections.map((section) => ({
@@ -40,14 +41,35 @@ const renderedSections = sections.map((section) => ({
         </p>
       </div>
 
-      <a
-        class="btn btn-primary product-download"
-        href={product.downloadUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Download
-      </a>
+      {sdkDownloadUrl ? (
+        <div class="btn-group product-download product-download-group">
+          <a
+            class="btn btn-primary"
+            href={product.downloadUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download
+          </a>
+          <a
+            class="btn btn-secondary"
+            href={sdkDownloadUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Processing SDK
+          </a>
+        </div>
+      ) : (
+        <a
+          class="btn btn-primary product-download"
+          href={product.downloadUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download
+        </a>
+      )}
     </header>
 
     <div class="release-layout">
@@ -215,8 +237,19 @@ const renderedSections = sections.map((section) => ({
     color: var(--color-text-muted);
   }
 
-  .product-download {
+  a.product-download {
     flex-shrink: 0;
+    padding: 0.7rem 1.15rem;
+    font-size: 0.84rem;
+  }
+
+  .product-download-group {
+    flex-shrink: 0;
+    width: auto;
+    min-width: min(100%, 22rem);
+  }
+
+  .product-download-group .btn {
     padding: 0.7rem 1.15rem;
     font-size: 0.84rem;
   }
@@ -300,9 +333,11 @@ const renderedSections = sections.map((section) => ({
       grid-template-columns: auto 1fr;
     }
 
-    .product-download {
+    a.product-download,
+    .product-download-group {
       grid-column: 1 / -1;
       width: 100%;
+      min-width: 0;
     }
   }
 
@@ -327,7 +362,8 @@ const renderedSections = sections.map((section) => ({
       grid-template-columns: auto 1fr;
     }
 
-    .product-download {
+    a.product-download,
+    .product-download-group {
       grid-column: 1 / -1;
     }
   }

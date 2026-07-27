@@ -138,12 +138,12 @@ p {
   width: 100%;
 }
 
-/* Desktop: primary on the right (secondary left) */
-.btn-group .btn-secondary {
+/* Desktop: primary left, secondary right (DOM order) */
+.btn-group .btn-primary {
   order: 1;
 }
 
-.btn-group .btn-primary {
+.btn-group .btn-secondary {
   order: 2;
 }
 

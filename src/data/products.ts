@@ -5,6 +5,8 @@ export interface Product {
   date: string;
   description: string;
   downloadUrl: string;
+  /** SharePoint link for Processing SDK authoring kit (v4 only; set by deploy). */
+  sdkDownloadUrl?: string;
   releaseNotesPath: string;
   image: string;
   accent: string;
@@ -20,6 +22,7 @@ export const products: Product[] = [
       'An all-in-one application built from the ground up, drawing on the strengths of previous versions with cloud support, advanced features, and a glimpse into the future of data analysis.',
     downloadUrl:
       'https://qualta.sharepoint.com/:u:/s/Qualta580/IQCuwG6YBvReTrKrVobWXml3AWuy6f6qL5-nAY6f64OmrI4',
+    sdkDownloadUrl: '',
     releaseNotesPath: '/releases/v4',
     image: '/vorteks4_logo.png',
     accent: '#5b8def',

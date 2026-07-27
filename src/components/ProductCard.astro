@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { product } = Astro.props;
+const sdkDownloadUrl = product.sdkDownloadUrl?.trim();
 ---
 
 <article class="product-card" style={`--accent: ${product.accent}`}>
@@ -29,9 +30,35 @@ const { product } = Astro.props;
     </div>
 
     <div class="product-actions">
-      <a class="btn btn-primary product-download" href={product.downloadUrl} target="_blank" rel="noopener noreferrer">
-        Download
-      </a>
+      {sdkDownloadUrl ? (
+        <div class="btn-group product-download">
+          <a
+            class="btn btn-primary"
+            href={product.downloadUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download
+          </a>
+          <a
+            class="btn btn-secondary"
+            href={sdkDownloadUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Processing SDK
+          </a>
+        </div>
+      ) : (
+        <a
+          class="btn btn-primary product-download"
+          href={product.downloadUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download
+        </a>
+      )}
       <a class="product-release-link" href={product.releaseNotesPath}>
         Release notes &rarr;
       </a>
@@ -162,8 +189,14 @@ const { product } = Astro.props;
     padding-top: 1.75rem;
   }
 
-  .product-download {
+  /* Single download link only — do not set display here on .btn-group
+     (that would override global grid and keep buttons side-by-side on mobile). */
+  a.product-download {
     display: flex;
+    width: 100%;
+  }
+
+  .product-download.btn-group {
     width: 100%;
   }
 
