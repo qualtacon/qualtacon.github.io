@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ReleaseNotes from '../../../components/ReleaseNotes.astro';
+import v4Notes from '../../../release-notes/preview/vorteks-4.md?raw';
+import { previewProducts } from '../../../data/previewProducts';
+import { parseReleaseNotes } from '../../../lib/parseReleaseNotes';
+
+const sections = parseReleaseNotes(v4Notes);
+const product = previewProducts.find((entry) => entry.id === 'v4')!;
+---
+
+<BaseLayout
+  title="Vorteks 4 (Preview)"
+  description="Preview download for Vorteks 4 and browse release notes for the next-generation all-in-one application."
+>
+  <ReleaseNotes
+    product={product}
+    backHref="/preview"
+    backLabel="Back to preview home"
+    sections={sections}
+  />
+</BaseLayout>

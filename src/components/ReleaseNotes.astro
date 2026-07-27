@@ -12,6 +12,7 @@ interface Props {
 }
 
 const { product, backHref, backLabel, sections } = Astro.props;
+const downloadUrl = product.downloadUrl?.trim();
 const sdkDownloadUrl = product.sdkDownloadUrl?.trim();
 
 const marked = new Marked({ gfm: true, breaks: true });
@@ -41,11 +42,11 @@ const renderedSections = sections.map((section) => ({
         </p>
       </div>
 
-      {sdkDownloadUrl ? (
+      {downloadUrl && sdkDownloadUrl ? (
         <div class="btn-group product-download product-download-group">
           <a
             class="btn btn-primary"
-            href={product.downloadUrl}
+            href={downloadUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -60,15 +61,19 @@ const renderedSections = sections.map((section) => ({
             Processing SDK
           </a>
         </div>
-      ) : (
+      ) : downloadUrl ? (
         <a
           class="btn btn-primary product-download"
-          href={product.downloadUrl}
+          href={downloadUrl}
           target="_blank"
           rel="noopener noreferrer"
         >
           Download
         </a>
+      ) : (
+        <span class="btn btn-primary product-download is-disabled" aria-disabled="true">
+          Download pending
+        </span>
       )}
     </header>
 
@@ -237,10 +242,17 @@ const renderedSections = sections.map((section) => ({
     color: var(--color-text-muted);
   }
 
-  a.product-download {
+  a.product-download,
+  span.product-download {
     flex-shrink: 0;
     padding: 0.7rem 1.15rem;
     font-size: 0.84rem;
+  }
+
+  .product-download.is-disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   .product-download-group {

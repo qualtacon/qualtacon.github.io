@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ReleaseNotes from '../../../components/ReleaseNotes.astro';
+import v3Notes from '../../../release-notes/vorteks-3.md?raw';
+import { previewProducts } from '../../../data/previewProducts';
+import { parseReleaseNotes } from '../../../lib/parseReleaseNotes';
+
+const sections = parseReleaseNotes(v3Notes);
+const product = previewProducts.find((entry) => entry.id === 'v3')!;
+---
+
+<BaseLayout
+  title="Vorteks 3 (Preview)"
+  description="Download Vorteks 3 and browse release notes for the processing, storage, and visualization suite."
+>
+  <ReleaseNotes
+    product={product}
+    backHref="/preview"
+    backLabel="Back to preview home"
+    sections={sections}
+  />
+</BaseLayout>

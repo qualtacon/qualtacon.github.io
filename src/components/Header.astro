@@ -1,17 +1,27 @@
 ---
-const navItems = [
-  { label: 'Products', href: '/#products' },
-  { label: 'Vorteks 4', href: '/releases/v4' },
-  { label: 'Vorteks 3', href: '/releases/v3' },
-];
+import { getSiteBase, siteHref } from '../lib/siteBase';
 
 const pathname = Astro.url.pathname;
+const base = getSiteBase(pathname);
+const homeHref = siteHref(base, '/');
+const isPreview = base === '/preview';
+
+const navItems = [
+  { label: 'Products', href: siteHref(base, '/#products') },
+  { label: 'Vorteks 4', href: siteHref(base, '/releases/v4') },
+  { label: 'Vorteks 3', href: siteHref(base, '/releases/v3') },
+];
 
 function isNavActive(href: string): boolean {
   const [path] = href.split('#');
 
-  if (path === '/') {
-    return pathname === '/' || pathname === '/index.html';
+  if (path === homeHref || path === `${homeHref}/`) {
+    return (
+      pathname === homeHref ||
+      pathname === `${homeHref}/` ||
+      pathname === `${homeHref}/index.html` ||
+      (homeHref === '/' && pathname === '/index.html')
+    );
   }
 
   return pathname === path || pathname.startsWith(`${path}/`);
@@ -19,8 +29,13 @@ function isNavActive(href: string): boolean {
 ---
 
 <header class="site-header">
+  {isPreview && (
+    <div class="preview-banner" role="status">
+      Preview build — not production
+    </div>
+  )}
   <div class="container header-inner">
-    <a class="brand" href="/">Qualta Consulting</a>
+    <a class="brand" href={homeHref}>Qualta Consulting</a>
 
     <button
       class="menu-toggle"
@@ -90,17 +105,30 @@ function isNavActive(href: string): boolean {
     position: fixed;
     inset: 0 0 auto;
     z-index: 100;
-    height: var(--nav-height);
+    display: flex;
+    flex-direction: column;
     background: rgba(11, 13, 18, 0.82);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--color-border);
+  }
+
+  .preview-banner {
+    padding: 0.35rem 1rem;
+    background: color-mix(in srgb, #e6a23c 22%, var(--color-surface));
+    border-bottom: 1px solid color-mix(in srgb, #e6a23c 40%, transparent);
+    color: #f0c674;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
   }
 
   .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
+    height: var(--nav-height);
   }
 
   .brand {
@@ -182,7 +210,7 @@ function isNavActive(href: string): boolean {
 
     .main-nav {
       position: absolute;
-      top: var(--nav-height);
+      top: 100%;
       left: 0;
       right: 0;
       padding: 1rem 1.25rem 1.25rem;
@@ -230,5 +258,16 @@ function isNavActive(href: string): boolean {
 <style is:global>
   body.nav-open {
     overflow: hidden;
+  }
+
+  /* Room for fixed preview banner above the main nav row */
+  body:has(.preview-banner) {
+    --nav-height: 6.25rem;
+  }
+
+  @media (max-width: 768px) {
+    body:has(.preview-banner) {
+      --nav-height: 5.75rem;
+    }
   }
 </style>

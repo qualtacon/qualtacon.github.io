@@ -7,6 +7,7 @@ interface Props {
 
 const { product } = Astro.props;
 const sdkDownloadUrl = product.sdkDownloadUrl?.trim();
+const downloadUrl = product.downloadUrl?.trim();
 ---
 
 <article class="product-card" style={`--accent: ${product.accent}`}>
@@ -30,11 +31,11 @@ const sdkDownloadUrl = product.sdkDownloadUrl?.trim();
     </div>
 
     <div class="product-actions">
-      {sdkDownloadUrl ? (
+      {downloadUrl && sdkDownloadUrl ? (
         <div class="btn-group product-download">
           <a
             class="btn btn-primary"
-            href={product.downloadUrl}
+            href={downloadUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -49,15 +50,19 @@ const sdkDownloadUrl = product.sdkDownloadUrl?.trim();
             Processing SDK
           </a>
         </div>
-      ) : (
+      ) : downloadUrl ? (
         <a
           class="btn btn-primary product-download"
-          href={product.downloadUrl}
+          href={downloadUrl}
           target="_blank"
           rel="noopener noreferrer"
         >
           Download
         </a>
+      ) : (
+        <span class="btn btn-primary product-download is-disabled" aria-disabled="true">
+          Download pending
+        </span>
       )}
       <a class="product-release-link" href={product.releaseNotesPath}>
         Release notes &rarr;
@@ -191,13 +196,20 @@ const sdkDownloadUrl = product.sdkDownloadUrl?.trim();
 
   /* Single download link only — do not set display here on .btn-group
      (that would override global grid and keep buttons side-by-side on mobile). */
-  a.product-download {
+  a.product-download,
+  span.product-download {
     display: flex;
     width: 100%;
   }
 
   .product-download.btn-group {
     width: 100%;
+  }
+
+  .product-download.is-disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   .product-release-link {
