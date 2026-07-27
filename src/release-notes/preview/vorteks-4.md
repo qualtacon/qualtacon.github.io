@@ -2,6 +2,52 @@ Vorteks 4 Release Notes
 =====================
 
 ## 4.0.1628.12
+07/27/2026
+
+## New Features
+
+#### [Dataset Dashboard](Dataset)
+
+**New Widgets**
+- Image Widget — Add pictures from a file, web link, clipboard, or drag-and-drop. Choose whether the image fits inside the widget or fills it.
+- Website Widget — Show a live webpage from a URL, or open a local HTML file or folder.
+
+**Easier to build and manage**
+- When adding a widget, you get a visual picker with preview icons so you can see what each widget looks like before choosing.
+- You can rename widgets.
+- You can resize widgets manually on the dashboard.
+- Chart and word cloud widgets can use more than one field from your data.
+- Notes widget behavior was improved.
+
+**Screenshots straight to the dashboard**
+- When exporting a visualization screenshot, you can:Add it directly to a dataset dashboard as an image widget
+
+#### [Dataset](Dataset)
+
+**New Command Bar Options**
+- Remove From Dataset — Delete selected documents from the dataset.
+- Delete From Project — Delete selected documents from the project (all datasets/views/etc).
+
+#### [Project Explorer](ProjectExplorer)
+Project Explorer supports right-click context menu
+
+#### [Document Type Registration](DataSource)
+Docment Type Registration now supports renaming of all fields. (Right click on a field to rename it.)
+
+
+## Improvements and Optimizations
+- Doc Type Manager field-type tooltips
+- Word Cloud: multiple fields
+
+
+## Bug Fixes
+- Deleting a node (value) from project will now remove it from other views.
+- RED borders on all required processor inputs
+- All file paths in the processor modules now support drag-and-drop.
+- XML re-import fails
+
+
+## 4.0.1628.12
 07/03/2026
 
 ## New Features
