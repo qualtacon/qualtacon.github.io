@@ -6,7 +6,7 @@ export const previewProducts: Product[] = [
     id: 'v4',
     name: 'Vorteks 4',
     version: '4.0.1628.12',
-    date: '07/31/2026',
+    date: '08/03/2026',
     description:
       'An all-in-one application built from the ground up, drawing on the strengths of previous versions with cloud support, advanced features, and a glimpse into the future of data analysis.',
     downloadUrl:
