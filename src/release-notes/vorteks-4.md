@@ -1,6 +1,154 @@
 Vorteks 4 Release Notes
 =====================
 
+## 4.0.1628.13
+08/11/2026
+
+## New Features
+
+### Geographic Network
+- New geographic view with support for network visualizations overlaid on maps.
+- Support for loading map files (including GeoTIFF `.tif` layers) with proper projection handling (e.g. 3857).
+- Added default BlueMarble.tif map to Documents/Vorteks4/Maps.
+- Online and file-based map error handling, map file path configuration, and layer management.
+- Shortest path, hops, and other SNA capabilities hooked into Geo views.
+- Improved map layer ordering (nodes drawn on top of edges) and view restoration.
+
+### Python Processor Module and Script Module SDK
+- New Python Processor module for running custom Python scripts in the processor.
+
+### Presentation Mode
+- New presentation mode that hides view tabs, panels for clean viewing.
+
+### Node Context Menus and Interactions
+- New node context menus with actions such as Lock Position, Add Data for visual, and more.
+- Improvements to node selection, focus, and data addition workflows.
+- `LockButton` control and consistent locking UI across sidebars.
+- Multi-row selection support in sidebars and improved locked visual management.
+
+### Minimap
+- Complete redesign and rework of the Minimap.
+- Drag-to-resize from the corner.
+- Accurate visible area calculations using normalizers and internal zoomed-out area logic.
+- Toggle visibility via the Panels menu in non-Geo views.
+- Better integration with camera movement and layout rebuilding.
+
+### Node Merging (Merge Nodes)
+- New "Merge Nodes" feature using term lists.
+- `MergedNodeValues` for project-wide persistence of merged data.
+- `NodeMerger` and `MergedNetworkNode` implementation with tests.
+- UI updates across views, data change detection, combo box handling, and serialization fixes.
+- Dedicated help content and localization.
+
+### Network Layout Algorithms
+- Added Kamada-Kawai and Yifan-Hu layouts.
+- Significant improvements to Force-Directed Layout for large networks (Barnes-Hut repulsion, stack overflow prevention, longer run tuning).
+- `RectanglePacker` for better aspect ratio handling in visualizations.
+
+### Locked Visuals System
+- Built-in support for maintaining locked visuals across visualizations.
+- Thread-safe implementation with HashSet.
+- Consistent support in Network, Distribution, Stream Graph, and other views.
+- Sidebar enhancements for managing locked items (sorting, symbols, multi-row selection).
+
+### View Navigation and Breadcrumbs
+- New navigation overlay with arrow buttons and keyboard shortcuts.
+- Navigation implemented across Network, Hierarchy, Stream Graph, Correlation, and Distribution views.
+- Breadcrumbs panel shows navigation history and current position; click to jump back to parent levels.
+- Command bar navigation commands and hotkeys hooked up for Distribution and Network views.
+- Global visualization settings for navigation behavior.
+- Dedicated navigation help content and localization.
+
+### App Search
+- Global search box in the main window title bar for commands, project items, help topics, and document text.
+- Simple Search and Advanced Search integration from the title bar.
+- App Search documentation added to help system.
+
+### Help System Overhaul
+- Refactored help TOC with TreeView, async loading, and page-first search.
+- Improved help index UI with async loading, slimmer keywords, and better scrolling.
+- In-page help search with accent highlighting.
+- Improved help search indexing; WhatsNew topics linked to help pages.
+- Help files aligned with LocalizationDictionary; geographic network documentation completed.
+
+### Get Started Screen
+- Refactored Get Started UI and MainPage layout.
+- Improved recent-projects list, layout, and drag-and-drop UX.
+- Recent projects sync when the app regains focus.
+- Wizard and advanced processor icons added.
+
+### Visual Labels
+- Added detailed visual labels for richer label content.
+- Fixed field values for many container types (Distribution categories, Network nodes, Stream Graph categories, etc.).
+- Added missing slider tooltips for label font size and count.
+
+### Document View
+- Improved DocumentView layout and interactive behavior.
+
+### Screenshot Export
+- Fixed screenshot export for different DPI and display scale settings.
+- Improved viewport screen capture with display scale (labels still have known limitations).
+
+### User Settings Persistence
+- User settings persisted in `Documents/Vorteks4/Settings`.
+- User settings manager moved to Shared project.
+
+## Improvements and Optimizations
+- Updated many dependencies to latest stable versions (WindowsAppSDK, Syncfusion, AWS SDKs, Microsoft.NET.Test.Sdk, etc.).
+- Performance improvements for large networks in layouts and rendering.
+- Minimap accuracy and performance improvements (normalizers, reduced unnecessary updates).
+- Rectangle packer for better layout performance in wide aspect ratio views.
+- Improved error handling and lifecycle management in Python processing.
+- Various refactors for sidebars, visual objects, command infrastructure, and panel management.
+- Better handling of locked visuals and reduced unnecessary updates in visualizations.
+- General stability and responsiveness improvements across the application.
+- Custom TitleBar control and improvements to window dragging behavior.
+- Flexible panel management and better tray behavior.
+- Numerous small refactors, test improvements, and localization updates.
+- Replaced vendored WordCloudGenerator DLL with NuGet package.
+- Localized dataset dashboard widget names and descriptions.
+- Simplified timeline play/stop commands; transparent background on timeline chart.
+- Tab tear-out feature disabled due to WinUI bugs (infrastructure retained).
+- `OnDeactivateAsync` called before disposing tabs on close.
+- Type resolution improvements for assembly version mismatches when loading saved projects.
+
+## Bug Fixes
+- Fixed application freezing when closing with pending changes from the Windows taskbar.
+- Fixed minimap covering too much of the view.
+- Hierarchy sorting crash and edges skipping tiers.
+- Multicolored nodes.
+- Panel tray and minimized panel issues when opening the app.
+- Numerous fixes for labels disappearing, edges becoming invisible, fading issues, and color problems in Network, Stream Graph, Geo, and Hierarchy views.
+- Fixed issues with loading and navigating locked visuals in Stream Graph and other visualizations.
+- Tooltip localization keys no longer displayed in the UI.
+- Various crashes and inconsistencies when working with hierarchies, sorting, collapsed networks, and data loading.
+- Font scale and projection fixes for older setups.
+- Many other stability and correctness fixes across views, sidebars, and data handling.
+- Locked visuals: fixed select all / invert behavior, navigation between locked visuals, and sidebar selection (Distribution, Hierarchy, Network).
+- Hierarchy: fixed sidebar order, faded edges, tier outline when adjusting scale, and nodes that could be dragged unintentionally.
+- Correlation: fixed camera reset on clear, crash when sorting sidebar, and camera focus on nodes still laying out children.
+- Stream Graph: fixed locked-visual selection selecting all, node scaling, edges in chart mode, duplicate color-legend values, and category label field values.
+- Network Analysis: fixed IN/OUT degree to include undirected/bidirectional edges; close analysis window when building or changing tabs.
+- Geographic: fixed double-click dataset creation.
+- Project Explorer: fixed ancestors being deleted.
+- Dataset: fixed column header artifacts on filler cell and teardown; catch cancellation exceptions on unload.
+- Minimap: fixed resize cursor appearing after resize.
+- Viewport: fixed events disabled after closing a tab that returns to the visualization.
+- Camera: fixed focus/position when building for visuals still laying out children; skip locked-visual updates when none are locked.
+- Value Filter: fixed playback when range is fully expanded.
+- CSV conversion: fixed errors breaking the document processing chain.
+- Term Lists: fixed row reordering after clicking a term with no changes.
+- Regex Extractor: fixed clearing terms during Init() (incorrect @DocumentCount incrementing).
+- Document Type Manager: fixed compound-field tree reloading, partial collapse, and available-fields updates when compounds change.
+- Available Fields: fixed loading compound fields with all aliases; fixed DocumentFieldTree xpaths for compound fields.
+- Processing: fixed processor load when reactivating a data source tab.
+- Project loading: fixed assembly/DLL version mismatches in DbSerializer, DbProjectData, ProcessorPackager, Color Legends Db, and ProjectDataInfo.
+- Network Analysis window: fixed stats grid not rendering until scrolled.
+- Windows: fixed COM exceptions when closing windows (Title property wrapped in try/catch).
+- Presentation mode: fixed Presentation button and CommandBarToggleButton behavior.
+- Color Legend: fixed duplicate color values for special objects and node label color + details display.
+
+
 ## 4.0.1420.10
 03/30/2026
 
