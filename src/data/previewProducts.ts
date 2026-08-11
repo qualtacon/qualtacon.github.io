@@ -5,14 +5,13 @@ export const previewProducts: Product[] = [
   {
     id: 'v4',
     name: 'Vorteks 4',
-    version: '4.0.1628.12',
-    date: '08/03/2026',
+    version: '4.0.1420.10',
+    date: '03/30/2026',
     description:
       'An all-in-one application built from the ground up, drawing on the strengths of previous versions with cloud support, advanced features, and a glimpse into the future of data analysis.',
     downloadUrl:
-      'https://qualta.sharepoint.com/:u:/s/Qualta580/IQD6bDNnJYhcSZWikxeyX9QvAXgDDLYs2VpD60ZP15-rSTA',
-    sdkDownloadUrl:
-      'https://qualta.sharepoint.com/:u:/s/Qualta580/IQCxh1f08lRkQqadQ1Rij317AVH5w8_XMrCJx0f9iB23lr0',
+      'https://qualta.sharepoint.com/:u:/s/Qualta580/IQBUmWcMlBN7SpaojSfjDwQKATHleJzSWv2B1sRgkvqmNmE?e=w7TveS',
+    sdkDownloadUrl: '',
     releaseNotesPath: '/preview/releases/v4',
     image: '/vorteks4_logo.png',
     accent: '#5b8def',
