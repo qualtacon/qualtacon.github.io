@@ -1,7 +1,7 @@
 Vorteks 4 Release Notes
 =====================
 
-## 4.0.1862.1
+## 4.0.1862.3
 09/28/2026
 
 ## Breaking Changes
