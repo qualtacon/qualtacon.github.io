@@ -25,7 +25,7 @@ export const products: Product[] = [
     sdkDownloadUrl:
       'https://qualta.sharepoint.com/:u:/s/Qualta580/IQCtRdtuhRnBQosQvemWpojGAZLPOwyzLfTzHRJT5PGsFno',
     releaseNotesPath: '/releases/v4',
-    image: '/vorteks4_logo.png',
+    image: '/icon-transparent.png',
     accent: '#5b8def',
   },
   {
