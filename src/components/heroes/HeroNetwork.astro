@@ -556,7 +556,9 @@ const nodeById = Object.fromEntries(nodes.map((node) => [node.id, node]));
 
   .hero-network .hero-bg {
     background-color: #070b16;
-    background-image: url('/hero-dark.png');
+    background-image:
+      linear-gradient(rgba(7, 11, 22, 0.42), rgba(7, 11, 22, 0.42)),
+      url('/hero-dark.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

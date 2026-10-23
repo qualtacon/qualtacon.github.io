@@ -35,7 +35,10 @@ function isNavActive(href: string): boolean {
     </div>
   )}
   <div class="container header-inner">
-    <a class="brand" href={homeHref}>Qualta Consulting</a>
+    <a class="brand" href={homeHref}>
+      <img class="brand-mark" src="/qualta%20logo.png" alt="" width="48" height="48" />
+      Qualta Consulting
+    </a>
 
     <button
       class="menu-toggle"
@@ -132,10 +135,20 @@ function isNavActive(href: string): boolean {
   }
 
   .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
     color: var(--color-text);
     font-weight: 600;
     font-size: 1.05rem;
     letter-spacing: -0.01em;
+  }
+
+  .brand-mark {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    flex-shrink: 0;
   }
 
   .brand:hover {
