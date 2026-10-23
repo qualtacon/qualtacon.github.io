@@ -1,6 +1,24 @@
 Vorteks 3 Release Notes
 =====================
 
+## 3.3.49.4
+10/22/2026
+
+### Processing Environment
+* Fixes
+    * Entity Relationship Finder
+        * Fix splitting sentences on "?"
+        * Fix splitting sentences on "!"
+
+### Data Manager
+* Improvements
+    * Database
+        * Upgrade the local Data Manager database from PostgreSQL 14.5 to 18.6 during a full install. Existing local projects, users, and documents are kept. The computer must stay on. A large document store needs free disk about the size of the database and takes longer to upgrade.
+        * The host, port 8765, and the existing database password do not change.
+        * The full installer (`Vorteks_<version>_Full.exe` and `Vorteks_<version>_Trial_Full.exe`) performs this upgrade. The update MSI does not change PostgreSQL.
+        * Do not uninstall PostgreSQL 14 from Windows until support confirms the new version. Uninstalling it can delete the backup copy of the data. Rollback is to disable the PostgreSQL 18 service `VorteksDataManager3`, set `VorteksDataManager14` to Automatic, and start it.
+        * A Data Manager database hosted on another computer is not changed by this installer. Those servers should move off PostgreSQL 14 before 12 November 2026.
+
 ## 3.3.39.6
 01/08/2026
 

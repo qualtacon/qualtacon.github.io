@@ -20,12 +20,12 @@ export const previewProducts: Product[] = [
   {
     id: 'v3',
     name: 'Vorteks 3',
-    version: '3.3.39.6',
-    date: '01/08/2026',
+    version: '3.3.49.4',
+    date: '10/22/2026',
     description:
       'A comprehensive suite of three applications for data processing, storage, and visualization — refined over years of development for performance and depth of features.',
     downloadUrl:
-      'https://qualta.sharepoint.com/:f:/s/Qualta580/IgAW2WF3VTm-RbjzZfWRswk0ARlVtefv1582GIKP7hTbAfA?e=3GxmQR',
+      'https://qualta.sharepoint.com/:f:/s/Qualta580/IgAkIuosSu1IQrEydNa19mTEAfolsqnR6RanolkHNHXBbJk?e=tZItDu',
     releaseNotesPath: '/preview/releases/v3',
     image: '/vorteks_logo.png',
     accent: '#5b8def',
