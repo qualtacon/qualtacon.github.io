@@ -261,11 +261,10 @@ const nodeById = Object.fromEntries(nodes.map((node) => [node.id, node]));
       </g>
     </svg>
   </div>
-  <HeroContent />
-  <a href="#products" class="hero-scroll-cue">
-    <span class="hero-scroll-label">Explore Vorteks</span>
-    <span class="hero-scroll-icon" aria-hidden="true"></span>
-  </a>
+  <HeroContent
+    eyebrow="Vorteks"
+    title="Desktop software for processing, analysis, and visualization."
+  />
 </section>
 
 <script define:vars={{ nodes, edges, clusters }}>
@@ -525,7 +524,9 @@ const nodeById = Object.fromEntries(nodes.map((node) => [node.id, node]));
 <style>
   .hero-network {
     --scroll-progress: 0;
-    --network-opacity: 0.48;
+    --network-opacity: 0.28;
+    min-height: 0;
+    padding-bottom: 2.5rem;
     overflow: hidden;
   }
 

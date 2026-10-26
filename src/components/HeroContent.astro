@@ -1,11 +1,21 @@
+---
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  lead?: string;
+}
+
+const {
+  eyebrow = 'Data Visualization & Analysis',
+  title = 'Turn complex data into clear, actionable insight.',
+  lead = 'For over a decade, Qualta Consulting has excelled in information visualization. That expertise powers the Vorteks software suite — built for analysts, data scientists, and teams who need advanced processing, storage, and visualization in one place.',
+} = Astro.props;
+---
+
 <div class="container hero-content">
-  <p class="eyebrow">Data Visualization &amp; Analysis</p>
-  <h1>Turn complex data into clear, actionable insight.</h1>
-  <p class="lead">
-    For over a decade, Qualta Consulting has excelled in information visualization.
-    That expertise powers the Vorteks software suite — built for analysts, data scientists,
-    and teams who need advanced processing, storage, and visualization in one place.
-  </p>
+  <p class="eyebrow">{eyebrow}</p>
+  <h1>{title}</h1>
+  <p class="lead">{lead}</p>
 </div>
 
 <style>

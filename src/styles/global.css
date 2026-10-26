@@ -121,6 +121,17 @@ p {
   color: #fff;
 }
 
+.btn-brand {
+  background: linear-gradient(90deg, #0f9d8c 0%, #2472f0 48%, #6a35e8 100%);
+  background-clip: padding-box;
+  color: #fff;
+}
+
+.btn-brand:hover {
+  background: linear-gradient(90deg, #14b5a2 0%, #3b86ff 48%, #7c4bff 100%);
+  color: #fff;
+}
+
 .btn-secondary {
   background: transparent;
   color: var(--color-text);

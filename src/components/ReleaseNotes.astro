@@ -9,9 +9,11 @@ interface Props {
   backHref: string;
   backLabel: string;
   sections: ReleaseSection[];
+  brandButtons?: boolean;
 }
 
-const { product, backHref, backLabel, sections } = Astro.props;
+const { product, backHref, backLabel, sections, brandButtons = false } = Astro.props;
+const primaryClass = brandButtons ? 'btn btn-brand' : 'btn btn-primary';
 const downloadUrl = product.downloadUrl?.trim();
 const sdkDownloadUrl = product.sdkDownloadUrl?.trim();
 
@@ -37,7 +39,7 @@ const renderedSections = sections.map((section) => ({
           {product.id === 'v4' && <span class="product-badge">Latest</span>}
         </div>
         <p class="product-version">
-          Version {product.version}
+          Version {product.version}{' '}
           <span class="date">({product.date})</span>
         </p>
       </div>
@@ -45,7 +47,7 @@ const renderedSections = sections.map((section) => ({
       {downloadUrl && sdkDownloadUrl ? (
         <div class="btn-group product-download product-download-group">
           <a
-            class="btn btn-primary"
+            class={primaryClass}
             href={downloadUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -63,7 +65,7 @@ const renderedSections = sections.map((section) => ({
         </div>
       ) : downloadUrl ? (
         <a
-          class="btn btn-primary product-download"
+          class={`${primaryClass} product-download`}
           href={downloadUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -71,7 +73,7 @@ const renderedSections = sections.map((section) => ({
           Download
         </a>
       ) : (
-        <span class="btn btn-primary product-download is-disabled" aria-disabled="true">
+        <span class={`${primaryClass} product-download is-disabled`} aria-disabled="true">
           Download pending
         </span>
       )}

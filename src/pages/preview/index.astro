@@ -22,7 +22,7 @@ import { previewProducts } from '../../data/previewProducts';
 
       <div class="product-grid">
         {previewProducts.map((product) => (
-          <ProductCard product={product} />
+          <ProductCard product={product} brandButtons />
         ))}
       </div>
     </div>
@@ -31,7 +31,7 @@ import { previewProducts } from '../../data/previewProducts';
 
 <style>
   .products-section {
-    padding: 5rem 0 0;
+    padding: 2.75rem 0 0;
     background:
       radial-gradient(ellipse at top, rgba(62, 106, 225, 0.08), transparent 55%),
       var(--color-bg);

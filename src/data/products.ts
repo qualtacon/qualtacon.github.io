@@ -19,7 +19,7 @@ export const products: Product[] = [
     version: '4.0.1862.5',
     date: '10/02/2026',
     description:
-      'An all-in-one application built from the ground up, drawing on the strengths of previous versions with cloud support, advanced features, and a glimpse into the future of data analysis.',
+      'An all-in-one application built from the ground up, drawing on the strengths of previous versions, with advanced features and a glimpse into the future of data analysis.',
     downloadUrl:
       'https://qualta.sharepoint.com/:u:/s/Qualta580/IQBWnYhOEyQyRoMPYUony_dxAWE0Jy3Gg9ZcPjhzVLFyMW0',
     sdkDownloadUrl:
